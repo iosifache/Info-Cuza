@@ -1,0 +1,220 @@
+/* Basic tags */
+body{
+margin: 0;
+font-family: 'Source Sans Pro', sans-serif !important;
+}
+
+a{
+text-decoration: none;
+}
+
+i{
+font-style: normal;
+text-transform: none;
+text-decoration: none;
+}
+
+ul{
+list-style-type: none;
+}
+
+*{
+outline: none;
+}
+
+/* Font classes */
+.extra-light{
+font-weight: 200;
+}
+
+.light{
+font-weight: 300;
+}
+
+.normal{
+font-weight: 400;
+}
+
+.semi-bold{
+font-weight: 600;
+}
+
+.bold{
+font-weight: 700;
+}
+
+.ultra-bold{
+font-weight: 900;
+}
+
+/* Two column */
+.grid{
+max-width: 960px;
+margin: 0 auto !important;
+}
+
+.col-1-2{
+width: 48%;
+float: left;
+}
+
+div .col-1-2:nth-child(2n+1){
+margin-right: 2%;
+}
+
+div .col-1-2:nth-child(2n){
+margin-left: 2%;
+}
+
+/* Header */
+.header{
+display: block;
+width: 100%;
+height: 24px;
+margin: 35px 0 35px 0;
+}
+
+.header p{
+display: inline;
+font-size: 24px;
+color: #b3b3b3;
+}
+
+.header p .normal{
+padding-left: 3px;
+}
+
+.header ul{
+display: inline;
+float: right;
+margin: 7px 0 0 0;
+}
+
+.header ul li{
+display: inline;
+padding: 0 10px 0 10px;
+font-size: 13px;
+color: #999;
+}
+
+/* Footer */
+.footer{
+display: block;
+width: 100%;
+margin: 50px 0 40px 0;
+text-align: center;
+font-size: 16px;
+color: #999;
+}
+
+.footer p{
+margin: 0 0 5px 0;
+}
+
+.footer img{
+display: inline;
+height: 25px;
+width: auto;
+opacity: .3;
+}
+
+/* Index page */
+.card{
+height: 400px;
+}
+
+.card-pattern{
+position: relative;
+height: 200px;
+overflow: hidden;
+text-align: center;
+}
+
+div div a .card-pattern p{
+width: 100%;
+text-align: center;
+font-size: 25px;
+}
+
+.card-pattern i{
+font-size: 400px;
+color: rgba(0,0,0,0.75);
+}
+
+.card-pattern p{
+position: absolute;
+top: 100px;
+margin: 0;
+color: #fff;
+}
+
+.card > p{
+font-size: 16px;
+color: #444;
+}
+
+.card-tuts{
+color: #888;
+}
+
+.card-tuts i{
+margin-right: 3px;
+}
+
+/* Tutorial page */
+.intro{
+width: 100%;
+height: 200px;
+margin-bottom: 30px;
+}
+
+.tutorial-title{
+padding-top: 58px;
+margin: 0;
+font-size: 50px;
+color: #000;
+}
+
+.infos{
+width: calc(100% - 300px);
+}
+
+.scrollspy{
+float: right;
+width: 200px;
+font-weight: 300;
+}
+
+.scrollspy ul{
+padding-top: 0;
+margin-top: 0;
+}
+
+.scrollspy a{
+color: #000;
+}
+
+.markdown-body .with{
+list-style-type: circle !important;
+}
+
+.markdown-body a{
+color: #000;
+}
+
+.markdown-body p{
+margin: 10px 0 0 0 !important;
+}
+
+.markdown-body ul{
+margin: 0 !important;
+}
+
+.markdown-body textarea{
+height: 100px;
+}
+
+.swich{
+background: #999;
+color: #fff !important;
+}
