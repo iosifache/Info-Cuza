@@ -34,6 +34,9 @@
 	    <div class="header">
 	        <ul>
 				<a href="#" id="category-all"><li class="bold">Toate tutorialele</li></a>
+				<li class="bold">Tip:</li>
+	            <a href="#" id="type-tutorial"><li class="bold swich">Tutorial</li></a>
+	            <a href="#" id="type-quiz"><li class="bold swich">Quiz</li></a>
 				<li class="bold">Materii:</li>
 	            <a href="#" id="category-info"><li class="bold swich">Informatica</li></a>
 	            <a href="#" id="category-tic"><li class="bold swich">Tehnologia informatiei</li></a>
@@ -47,7 +50,7 @@
 
 	<!-- Tutorials -->
 	<div class="grid">
-		<div class="col-1-2 card" data-category="info">
+		<div class="col-1-2 card" data-category="info" data-type="tutorial">
 			<a href="tutorial.html?name=algoritm">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -60,7 +63,7 @@
 				Informatica: 30 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="info">
+        <div class="col-1-2 card" data-category="info" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -73,7 +76,7 @@
 				Informatica: 30 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="info">
+        <div class="col-1-2 card" data-category="info" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -86,7 +89,7 @@
 				Informatica: 120 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="info">
+        <div class="col-1-2 card" data-category="info" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -99,7 +102,7 @@
 				Informatica: 120 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="info">
+        <div class="col-1-2 card" data-category="info" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -112,7 +115,7 @@
 				Informatica: 120 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="info">
+        <div class="col-1-2 card" data-category="info" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -125,7 +128,7 @@
 				Informatica: 180 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="tic">
+        <div class="col-1-2 card" data-category="tic" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -138,7 +141,7 @@
 				TIC: 120 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="tic">
+        <div class="col-1-2 card" data-category="tic" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -151,7 +154,20 @@
 				TIC: 120 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="tic">
+		<div class="col-1-2 card" data-category="tic" data-type="quiz">
+			<a href="">
+				<div class="card-pattern" id="random">
+					<i class="fa fa-circle fa-5x"></i>
+					<p class="bold">Quiz: Pagini web</p>
+				</div>
+			</a>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+			<div class="card-tuts">
+				<i class="fa fa-th"></i>
+				TIC: 120 de minute
+			</div>
+		</div>
+        <div class="col-1-2 card" data-category="tic" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -164,7 +180,7 @@
 				TIC: 180 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="tic">
+        <div class="col-1-2 card" data-category="tic" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -177,7 +193,7 @@
 				TIC: 180 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="tic">
+        <div class="col-1-2 card" data-category="tic" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
@@ -190,11 +206,24 @@
 				TIC: 180 de minute
 			</div>
 		</div>
-        <div class="col-1-2 card" data-category="tic">
+        <div class="col-1-2 card" data-category="tic" data-type="tutorial">
 			<a href="">
 				<div class="card-pattern" id="random">
 					<i class="fa fa-circle fa-5x"></i>
 					<p class="bold">MS Office Access</p>
+				</div>
+			</a>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+			<div class="card-tuts">
+				<i class="fa fa-th"></i>
+				TIC: 180 de minute
+			</div>
+		</div>
+		<div class="col-1-2 card" data-category="tic" data-type="quiz">
+			<a href="">
+				<div class="card-pattern" id="random">
+					<i class="fa fa-circle fa-5x"></i>
+					<p class="bold">Quiz: MS Office Access</p>
 				</div>
 			</a>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
@@ -226,6 +255,28 @@
 			$('#category-all').click(function(){
 				$(".card").each(function(){
 					$(this).removeAttr('style');
+				});
+			});
+			$('#type-tutorial').click(function(){
+				$(".card").each(function(){
+					var category = $(this).attr("data-type");
+					if (category == "quiz"){
+						$(this).css({'display':'none'});
+					}
+					if (category == "tutorial"){
+						$(this).removeAttr('style');
+					}
+				});
+			});
+			$('#type-quiz').click(function(){
+				$(".card").each(function(){
+					var category = $(this).attr("data-type");
+					if (category == "tutorial"){
+						$(this).css({'display':'none'});
+					}
+					if (category == "quiz"){
+						$(this).removeAttr('style');
+					}
 				});
 			});
 			$('#category-tic').click(function(){
