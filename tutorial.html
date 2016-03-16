@@ -66,24 +66,17 @@
 		<!-- Scrollspy -->
 		<div class="scrollspy" id="scrollspy">
 			<ul>
-				<a href="#description"><li id="scrollspylink0">Descriere</li></a>
-				<a href="#section1"><li id="scrollspylink1">{{section-one-title}}</li></a>
-				<a href="#section2"><li id="scrollspylink2">{{section-two-title}}</li></a>
-				<a href="#section3"><li id="scrollspylink3">{{section-three-title}}</li></a>
-				<a href="#section4"><li id="scrollspylink4">{{section-four-title}}</li></a>
-				<a href="#section5"><li id="scrollspylink5">{{section-five-title}}</li></a>
+				{{#sections}}
+					<a href="{{href}}"><li id="{{id_scrollspy}}">{{content}}</li></a>
+				{{/sections}}
 			</ul>
 		</div>
 
 		<!-- Info -->
 		<div class="infos markdown-body">
-			<p id="description">{{description-text}}</p>
-			<h2 id="section1">{{section-one-title}}</h2>
-			<h2 id="section2">{{section-two-title}}</h2>
-			<h2 id="section3">{{section-three-title}}</h2>
-			<h2 id="section4">{{section-four-title}}</h2>
-			<h2 id="section5">{{section-five-title}}</h2>
-			<h2 id="section5">Celebrate</h2>
+			{{#sections}}
+				<h2 id="{{id}}">{{content}}</h2>
+			{{/sections}}
 			<p>In acesta lectie ai invatat:</p>
 			<ul class="with">
 				{{#celebrate}}

@@ -192,6 +192,7 @@ margin-top: 0;
 
 .scrollspy a{
 color: #000;
+display: block;
 }
 
 .markdown-body .with{
