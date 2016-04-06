@@ -13,7 +13,7 @@
 	<link href="css/basic.css" rel="stylesheet" type="text/css">
 	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://guides.github.com/components/primer/markdown.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,600,700,900' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,600,700,900" rel="stylesheet" type="text/css">
 
     <!-- Favicon -->
     <link href="" rel="shortcut icon" type="image/x-icon">
@@ -27,22 +27,22 @@
 	<!-- JS Script -->
     <script src="javascript/jquery-2.2.0.min.js" language="JavaScript" type="text/javascript"></script>
     <script src="javascript/mustache.min.js" language="JavaScript" type="text/javascript"></script>
-    <script src="javascript/generate-tutorial.js" language="JavaScript" type="text/javascript"></script>
+    <script src="javascript/generate.tutorial.js" language="JavaScript" type="text/javascript"></script>
 	<script src="javascript/smooth-scroll.js" language="JavaScript" type="text/javascript"></script>
-	<script src="javascript/scrollspy.js" language="JavaScript" type="text/javascript"></script>
-	<script src="javascript/scrollspy-tutorial.js" language="JavaScript" type="text/javascript"></script>
+	<script src="javascript/scrollspy.tutorial.js" language="JavaScript" type="text/javascript"></script>
 
 </head>
 <body id="mustache-render" type="text/template">
 
-    <!-- Header with logo and menu -->
+    <!-- Header -->
 	<div class="grid">
 	    <div class="header">
 	        <ul>
 	            <a href="index.html"><li class="bold">Acasa</li></a>
 				<li class="bold">Limbaje de programare:</li>
-	            <a href=""><li class="bold swich">C++</li></a>
-	            <a href=""><li class="bold swich">Pascal</li></a>
+				{{#lang}}
+					<a href="{{href}}"><li class="bold swich">{{text}}</li></a>
+				{{/lang}}
 	        </ul>
 			<p>
 				<i class="ultra-bold">Info</i>
@@ -51,7 +51,7 @@
 	    </div>
 	</div>
 
-    <!-- Tutorial intro -->
+    <!-- Intro -->
     <div class="intro">
 		<div class="grid">
 	        <p class="tutorial-title bold">{{title}}</p>
@@ -72,7 +72,7 @@
 			</ul>
 		</div>
 
-		<!-- Info -->
+		<!-- Tutorial -->
 		<div class="infos markdown-body">
 			{{#sections}}
 				<h2 id="{{id}}">{{content}}</h2>
@@ -83,26 +83,23 @@
 					<li>{{.}}</li>
 				{{/celebrate}}
 			</ul>
+			<p>Multumim urmatorilor editori pentru furnizarea informatiilor:</p>
+			<ul class="with">
+				{{#bibliografie}}
+					<li>{{.}}</li>
+				{{/bibliografie}}
+			</ul>
 		</div>
 
 	</div>
 
-    <!-- Footer with website description -->
+    <!-- Footer -->
 	<div class="grid">
 	    <div class="footer">
 	        <p>InfoCuza este cea mai buna metoda de a stapani</p>
 	        <img src="image/forta.png">
 	    </div>
 	</div>
-
-	<!-- JS scripts -->
-	<script>
-		$( document ).ready(function(){
-			// Random background
-		    var images = ['pattern_1.png', 'pattern_2.png', 'pattern_3.png', 'pattern_4.png', 'pattern_5.png', 'pattern_6.png', 'pattern_7.png', 'pattern_8.png', 'pattern_9.png', 'pattern_10.png', 'pattern_11.png', 'pattern_12.png'];
-		    $('.intro').css({'background-image': 'url(image/' + images[Math.floor(Math.random() * images.length)] + ')'});
-		});
-	</script>
 
 </body>
 </html>

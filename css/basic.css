@@ -2,6 +2,7 @@
 body{
 margin: 0;
 font-family: 'Source Sans Pro', sans-serif !important;
+overflow-y: auto;
 }
 
 a{
@@ -56,14 +57,7 @@ margin: 0 auto !important;
 .col-1-2{
 width: 48%;
 float: left;
-}
-
-div .col-1-2:nth-child(2n+1){
-margin-right: 2%;
-}
-
-div .col-1-2:nth-child(2n){
-margin-left: 2%;
+margin: 0 1%;
 }
 
 /* Header */
@@ -78,6 +72,7 @@ margin: 35px 0 35px 0;
 display: inline;
 font-size: 24px;
 color: #b3b3b3;
+margin-left: 1%;
 }
 
 .header p .normal{
@@ -87,7 +82,7 @@ padding-left: 3px;
 .header ul{
 display: inline;
 float: right;
-margin: 7px 0 0 0;
+margin: 7px 1% 0 0;
 }
 
 .header ul li{
@@ -99,6 +94,7 @@ color: #999;
 
 /* Footer */
 .footer{
+clear: both;
 display: block;
 width: 100%;
 margin: 50px 0 40px 0;
@@ -195,6 +191,30 @@ color: #000;
 display: block;
 }
 
+.swich{
+background: #999;
+color: #fff !important;
+}
+
+h2{
+clear: both;
+}
+
+/* JQuery UI */
+.droppable1{
+background-color: #ED7A6E !important;
+}
+
+.droppable2{
+background-color: #ED7A6E !important;
+}
+
+#draggable code{
+z-index: 1;
+cursor: pointer;
+}
+
+/* Markdown body */
 .markdown-body .with{
 list-style-type: circle !important;
 }
@@ -204,7 +224,7 @@ color: #000;
 }
 
 .markdown-body p{
-margin: 10px 0 0 0 !important;
+margin: 5px 0 !important;
 }
 
 .markdown-body ul{
@@ -215,7 +235,25 @@ margin: 0 !important;
 height: 100px;
 }
 
-.swich{
-background: #999;
-color: #fff !important;
+.markdown-body img{
+margin: 10px 0;
+opacity: .5;
+transition: opacity 0.5s;
+}
+
+.markdown-body img:hover{
+opacity: 1;
+}
+
+#section3 ~ div code{
+display: block;
+margin-top: 5px !important;
+width: 250px !important;
+height: 25px !important;
+}
+
+#calc{
+cursor: pointer;
+border: none;
+margin-top: 10px;
 }
