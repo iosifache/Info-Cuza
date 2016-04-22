@@ -1,3 +1,7 @@
+$(window).load(function(){
+    $('#loading').delay(2000).hide(0);
+});
+
 $( document ).ready(function(){
 	// Random background
 	var images = ['pattern_1.png', 'pattern_2.png', 'pattern_3.png', 'pattern_4.png', 'pattern_5.png', 'pattern_6.png', 'pattern_7.png', 'pattern_8.png', 'pattern_9.png', 'pattern_10.png', 'pattern_11.png', 'pattern_12.png'];

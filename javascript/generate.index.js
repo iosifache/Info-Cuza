@@ -1,3 +1,7 @@
+$(window).load(function(){
+    $('#loading').delay(2000).hide(0);
+});
+
 $(document).ready(function(){
 	// Moustache render
 	var template = $('#mustache-render').html();

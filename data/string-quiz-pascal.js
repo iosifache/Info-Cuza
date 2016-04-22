@@ -14,7 +14,7 @@ var view = {
             "name":"2"
         },
         {
-            "text":"3. Citirea si scrierea sctring-urilor se face cu:?",
+            "text":"3. Citirea si scrierea string-urilor se face cu:",
             "answers":[{"text":"readln si writeln;","value":"1"},{"text":"cin.get si writeln;","value":"2"},{"text":"cin si cout.","value":"3"}],
             "name":"3"
         },
@@ -39,7 +39,7 @@ var view = {
             "code":[{"text":"x:='Mama';"},{"text":"y:='Macara';"},{"text":"if x<y then write(y)"},{"text":"else writeln('Incorect');"}]
         },
         {
-            "text":"3. Considerând cã variabila x este de tip char*, ce se va afisa în urma executarii urmatoarei secvente de instructiuni?",
+            "text":"3. Ce se va afisa în urma executarii urmatoarei secvente de instructiuni?",
             "code":[{"text":"s:='MacarA';"},{"text":"x:=' ';"},{"text":"for i:=1 to 6 do x:=s[i]+x;"},{"text":"s:=x;"},{"text":"writeln(s);"}]
         }
     ],

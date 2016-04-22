@@ -9,7 +9,7 @@ var view = {
         {"href":"#section3", "id_scrollspy":"scrollspylink3", "id":"section3", "content":"Biblioteca string.h"},
         {"href":"#section4", "id_scrollspy":"scrollspylink4", "id":"section4", "content":"Biblioteca stdlib.h"},
         {"href":"#section5", "id_scrollspy":"scrollspylink5", "id":"section5", "content":"Exercitii propuse"},
-        {"href":"#celebrate", "id_scrollspy":"scrollspylink6", "id":"celebrate", "content":"Celebrate!"},
+        {"href":"#celebrate", "id_scrollspy":"scrollspylink6", "id":"celebrate", "content":"Felicitari!"},
     ],
     "celebrate": ["ce sunt string-urile;", "cum se declara, citesc si scriu acestea;", "cum sa folosesti functii importante din diferite biblioteci;"],
     "bibliografie": ["profesor Mihai Chelariu, cu ajutorul website-ului personal;", "editura LS-INFOMAT, cu ajutorul cartii 'Fundamentele programarii.'"]

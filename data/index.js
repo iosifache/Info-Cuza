@@ -12,17 +12,19 @@ var view = {
     {
         "category":"tic",
         "type":"quiz",
-        "href":"quiz.html?name=web-quiz",
+        "href":"#",
+        "_comment": "quiz.html?name=web-quiz",
         "title":"Quiz: Pagini web",
-        "description":"O pagina web este o resursa aflata in spatiul web din Internet, de obicei în format HTML și avand hyperlinkuri pentru navigarea simpla de la o pagina sau sectiune de pagină la alta. Pagina web se numeste astfel deoarece ea se poate afisa pe un monitor sau ecran de calculator si se aseamana intr-o oarecare masura cu o pagina de ziar.",
+        "description":"O pagina web este o resursa aflata in spatiul web din Internet, de obicei în format HTML și avand hyperlinkuri pentru navigarea simpla de la o pagina sau sectiune de pagina la alta. Pagina web se numeste astfel deoarece ea se poate afisa pe un monitor sau ecran de calculator si se aseamana intr-o oarecare masura cu o pagina de ziar.",
         "others":"TIC: 30 minute"
     },
     {
         "category":"tic",
         "type":"tutorial",
-        "href":"tutorial.html?name=web-tutorial",
+        "href":"#",
+        "_comment": "tutorial.html?name=web-tutorial",
         "title":"Pagini web",
-        "description":"O pagina web este o resursa aflata in spatiul web din Internet, de obicei în format HTML și avand hyperlinkuri pentru navigarea simpla de la o pagina sau sectiune de pagină la alta. Pagina web se numeste astfel deoarece ea se poate afisa pe un monitor sau ecran de calculator si se aseamana intr-o oarecare masura cu o pagina de ziar.",
+        "description":"O pagina web este o resursa aflata in spatiul web din Internet, de obicei în format HTML și avand hyperlinkuri pentru navigarea simpla de la o pagina sau sectiune de pagina la alta. Pagina web se numeste astfel deoarece ea se poate afisa pe un monitor sau ecran de calculator si se aseamana intr-o oarecare masura cu o pagina de ziar.",
         "others":"TIC: 60 minute"
     },
     {

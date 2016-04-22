@@ -48,6 +48,66 @@ font-weight: 700;
 font-weight: 900;
 }
 
+/* Loading */
+.loading-background{
+margin: 0;
+padding: 0;
+height: 100%;
+width: 100%;
+background-color: #fff;
+z-index: 1;
+position: fixed;
+top: 0;
+left: 0;
+}
+
+.fa-spinner{
+top: calc(50% - 70px);
+top: -o-calc(50% - 70px);
+top: -ms-calc(50% - 70px);
+top: -moz-calc(50% - 70px);
+top: -webkit-calc(50% - 70px);
+left: calc(50% - 70px);
+left: -o-calc(50% - 70px);
+left: -ms-calc(50% - 70px);
+left: -moz-calc(50% - 70px);
+left: -webkit-calc(50% - 70px);
+position: absolute;
+z-index: 2;
+color: #999;
+animation: spin 1500ms infinite linear;
+-o-animation: spin 1500ms infinite linear;
+-ms-animation: spin 1500ms infinite linear;
+-moz-animation: spin 1500ms infinite linear;
+-webkit-animation: spin 1500ms infinite linear;
+}
+
+.content{
+z-index: 0;
+}
+
+@keyframes spin {
+  	0%{
+    	-webkit-transform: rotate(0deg);
+    	transform: rotate(0deg);
+  	}
+  	100% {
+    	-webkit-transform: rotate(359deg);
+    	transform: rotate(359deg);
+  	}
+}
+
+@-webkit-keyframes spin{
+	0%{
+    	-webkit-transform: rotate(0deg);
+    	transform: rotate(0deg);
+  	}
+  	100%{
+    	-webkit-transform: rotate(359deg);
+    	transform: rotate(359deg);
+  	}
+}
+
 /* Two column */
 .grid{
 max-width: 960px;
