@@ -3,15 +3,14 @@ $(window).load(function(){
 });
 
 $(document).ready(function(){
-	// Moustache render
-	var template = $('#mustache-render').html();
-	var output = Mustache.to_html(template, view);
-   	$('#mustache-render').html(output);
 
 	// Random background
-	var images = ['pattern_1.png', 'pattern_2.png', 'pattern_3.png', 'pattern_4.png', 'pattern_5.png', 'pattern_6.png', 'pattern_7.png', 'pattern_8.png', 'pattern_9.png', 'pattern_10.png', 'pattern_11.png', 'pattern_12.png'];
+    var images = [];
+    for (i=1; i<=249; i++){
+        images[i] = 'pattern_' + i.toString() + '.png';
+    }
 	$(".card #random").each(function(){
-		$(this).css({'background-image': 'url(image/' + images[Math.floor(Math.random() * images.length)] + ')'});
+		$(this).css({'background-image': 'url(image/patterns/' + images[Math.floor(Math.random() * images.length)] + ')'});
 	});
 
 	// Show and hide buttons
@@ -23,10 +22,10 @@ $(document).ready(function(){
 	$('#type-tutorial').click(function(){
 		$(".card").each(function(){
 			var category = $(this).attr("data-type");
-			if (category == "quiz"){
+			if (category == "2"){
 				$(this).css({'display':'none'});
 			}
-			if (category == "tutorial"){
+			if (category == "1"){
 				$(this).removeAttr('style');
 			}
 		});
@@ -34,10 +33,10 @@ $(document).ready(function(){
 	$('#type-quiz').click(function(){
 		$(".card").each(function(){
 			var category = $(this).attr("data-type");
-			if (category == "tutorial"){
+			if (category == "1"){
 				$(this).css({'display':'none'});
 			}
-			if (category == "quiz"){
+			if (category == "2"){
 				$(this).removeAttr('style');
 			}
 		});
@@ -45,10 +44,10 @@ $(document).ready(function(){
 	$('#category-tic').click(function(){
 		$(".card").each(function(){
 			var category = $(this).attr("data-category");
-			if (category == "info"){
+			if (category == "1"){
 				$(this).css({'display':'none'});
 			}
-			if (category == "tic"){
+			if (category == "2"){
 				$(this).removeAttr('style');
 			}
 		});
@@ -56,10 +55,10 @@ $(document).ready(function(){
 	$('#category-info').click(function(){
 		$(".card").each(function(){
 			var category = $(this).attr("data-category");
-			if (category=="tic"){
+			if (category=="2"){
 				$(this).css({'display':'none'});
 			}
-			if (category == "info"){
+			if (category == "1"){
 				$(this).removeAttr('style');
 			}
 		});
