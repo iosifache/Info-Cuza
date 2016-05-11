@@ -1,9 +1,8 @@
 <html>
 <head>
 
+	<!-- Title and meta -->
 	<title>InfoCuza - Tutorial</title>
-
-	<!-- Meta tags -->
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -18,12 +17,6 @@
     <!-- Favicon -->
     <link href="image/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-	<!-- Share infos -->
-	<link href="" rel="image_src" type="image/jpeg">
-	<meta content="" property="og:image">
-	<meta content="" property="og:title">
-	<meta content="" property="og:description">
-
 </head>
 <body>
 
@@ -33,7 +26,12 @@
     </div>
 
 	<?php
-		// Connect - take from General usual data
+
+		// Hide errors
+		error_reporting(0);
+		ini_set('display_errors', 0);
+
+		// Connect to General table
 		$id = htmlspecialchars($_GET["id"]);
 		$id_array  = array_map('intval', str_split($id));
 		if ($id_array[2]==2){
@@ -50,7 +48,7 @@
 		$materie = $row['materie'];
 		mysqli_close($conn);
 
-		// Connect - take data from Tutorial
+		// Connect to Tutorial table
 		$conn = mysqli_connect("localhost", "root", "", "info-cuza");
 		mysqli_select_db($conn, "Tutorial");
 		$query = "SELECT * FROM Tutorial WHERE id=$id";
@@ -85,7 +83,7 @@
 		print("<p class='tutorial-title bold'>" . $titlu ."</p>");
 		print("<div class='card-tuts'>");
 		print("<i class='fa fa-clock-o'></i>");
-		print($timp . " minute");
+		print($timp . " minute." . "<i id='export'> Export to PDF</i>");
 		print("</div>");
 		print("</div>");
 		print("</div>");
@@ -134,8 +132,9 @@
 		print("</div>");
 		print("</div>");
 
-		// Close connection
+		// Disconnect
 		mysqli_close($conn);
+
 	?>
 
     <!-- Footer -->
@@ -146,8 +145,9 @@
 	    </div>
 	</div>
 
-	<!-- External JS Script -->
+	<!-- External JS scripts -->
     <script src="javascript/jquery-2.2.0.min.js" language="JavaScript" type="text/javascript"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js" language="JavaScript" type="text/javascript"></script>
     <script src="javascript/generate.tutorial.js" language="JavaScript" type="text/javascript"></script>
 	<script src="javascript/smooth-scroll.js" language="JavaScript" type="text/javascript"></script>
 	<script src="javascript/scrollspy.tutorial.js" language="JavaScript" type="text/javascript"></script>

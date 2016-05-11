@@ -1,0 +1,14 @@
+Parole necesare:
+- cpanel.hostinger.co.uk necesita xe********
+- my.freenom.com  necesita xe********
+- Github necesita xe********
+
+In Hostinger, se incuieste conexunea intiala cu:
+$conn = mysqli_connect("mysql.hostinger.co.uk", "u412979867_root", "Wasabi98", "u412979867_info");
+
+Before:
+- GIT commit
+- afisare exercitii gresite in quiz
+* unserialize in Quiz
+* PHP agaudare si editare Quiz
+* trimitere Quiz in editare

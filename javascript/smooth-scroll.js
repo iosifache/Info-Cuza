@@ -1,4 +1,6 @@
 $( document ).ready(function(){
+
+    // Verify if target of link is a section of page
     $('a[href*="#"]:not([href="#"])').click(function(){
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname){
             var target = $(this.hash);
@@ -13,4 +15,5 @@ $( document ).ready(function(){
             }
         }
       });
+
 });

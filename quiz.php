@@ -1,9 +1,8 @@
 <html>
 <head>
 
+	<!-- Title and meta -->
 	<title>InfoCuza - Quiz</title>
-
-	<!-- Meta tags -->
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -18,12 +17,6 @@
     <!-- Favicon -->
     <link href="image/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-	<!-- Share infos -->
-	<link href="" rel="image_src" type="image/jpeg">
-	<meta content="" property="og:image">
-	<meta content="" property="og:title">
-	<meta content="" property="og:description">
-
 </head>
 <body>
 
@@ -33,6 +26,11 @@
     </div>
 
 	<?php
+
+		// Hide errors
+		error_reporting(0);
+		ini_set('display_errors', 0);
+
 		// Connect - take from General usual data
 	    $id = htmlspecialchars($_GET["id"]);
 	    $id_array  = array_map('intval', str_split($id));
@@ -66,10 +64,10 @@
 	        print("<li class='bold'>Limbaje de programare:</li>");
 	        $id_array[2]=1;
 	        $new_id = implode("", $id_array);
-	        print("<a href='tutorial.php?id=" . $new_id . "'><li class='bold swich'>C++</li></a>");
+	        print("<a href='quiz.php?id=" . $new_id . "'><li class='bold swich'>C++</li></a>");
 	        $id_array[2]=2;
 	        $new_id = implode("", $id_array);
-	        print("<a href='tutorial.php?id=" . $new_id . "'><li class='bold swich'>Pascal</li></a>");
+	        print("<a href='quiz.php?id=" . $new_id . "'><li class='bold swich'>Pascal</li></a>");
 	    }
 	    print("</ul>");
 	    print("<p>");
@@ -89,7 +87,6 @@
 	    print("</div>");
 	    print("</div>");
 	    print("</div>");
-	    print("<div class='grid'>");
 
 		// Scrollspy
 		print("<div class='grid'>");
@@ -111,9 +108,10 @@
 			print("<ul>");
 			$int_array = $row[$contor_rasp];
 			$int = unserialize($int_array);
-			print("<li><input type='radio' name='' value=''>". $int[0] ."</li>");
-			print("<li><input type='radio' name='' value=''>". $int[1] ."</li>");
-			print("<li><input type='radio' name='' value=''>". $int[2] ."</li>");
+			for ($j=0; $j<=2; $j++){
+				$incremented = $j + 1;
+				print("<li><input type='radio' name='' value='" . $incremented . "'>". $int[$j] ."</li>");
+			}
 			print("</ul>");
 		}
 		print("<h2 id='section2'>Output</h2>");
@@ -124,7 +122,6 @@
 			print($row[$contor_rasp]);;
 			print("Output: <input type='text'></input>");
 		}
-
 		print("<h2 id='section3'>Drag and drop</h2>");
 		print("<p>Sa se afiseze toate prefixele unui cuvant.</p>");
 		print("<div class='col-1-2'>");
@@ -138,9 +135,12 @@
 		print("<p id='result-message'></p>");
 		print("</div>");
 		print("</div>");
+		$correct = $row["correct"];
+		print("<div id='hidded' style='display: none;'>" . $correct . "</div>");
 
-		// Close connection
+		// Disconnect
 		mysqli_close($conn);
+
 	?>
 
     <!-- Footer -->
@@ -151,9 +151,9 @@
 	    </div>
 	</div>
 
-	<!-- External JS Script -->
+	<!-- External JS scripts -->
 	<script src="javascript/jquery-2.2.0.min.js" language="JavaScript" type="text/javascript"></script>
-	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" language="JavaScript" type="text/javascript"></script>
 	<script src="javascript/generate.quiz.js" language="JavaScript" type="text/javascript"></script>
 	<script src="javascript/smooth-scroll.js" language="JavaScript" type="text/javascript"></script>
 	<script src="javascript/scrollspy.quiz.js" language="JavaScript" type="text/javascript"></script>

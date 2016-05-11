@@ -1,4 +1,5 @@
 $(window).scroll(function(){
+
     var scrollTop = $(window).scrollTop();
     if(scrollTop>324){
         $('#scrollspy').css({ 'position': 'fixed', 'top' : '10', 'right':'calc((100% - 960px)/2)' });
@@ -83,4 +84,5 @@ $(window).scroll(function(){
 		$('#scrollspylink5').css({'font-weight': '300'});
         $('#scrollspylink6').css({'font-weight': '800'});
 	}
+    
 });

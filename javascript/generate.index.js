@@ -1,5 +1,8 @@
 $(window).load(function(){
-    $('#loading').delay(2000).hide(0);
+
+    // Wait 1s after load
+    $('#loading').delay(1000).hide(0);
+
 });
 
 $(document).ready(function(){

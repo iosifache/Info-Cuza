@@ -1,10 +1,8 @@
 <html>
 <head>
 
-	<!-- Title -->
+	<!-- Title and meta -->
 	<title>InfoCuza</title>
-
-	<!-- Meta tags -->
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -13,7 +11,6 @@
 	<!-- Stylesheets -->
 	<link href="css/basic.css" rel="stylesheet" type="text/css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,600,700,900" rel="stylesheet" type="text/css">
 
     <!-- Favicon -->
@@ -37,6 +34,7 @@
 	<div class="grid">
 	    <div class="header">
 	        <ul>
+				<a href="chat.php"><li class="bold">Chat</li></a>
 				<a href="#" id="category-all"><li class="bold">Toate tutorialele</li></a>
 				<li class="bold">Tip:</li>
 	            <a href="#" id="type-tutorial"><li class="bold swich">Tutorial</li></a>
@@ -53,6 +51,11 @@
 	</div>
 
 	<?php
+
+		// Hide errors
+		error_reporting(0);
+		ini_set('display_errors', 0);
+
 		// Connect
 		$conn = mysqli_connect("localhost", "root", "", "info-cuza");
 		mysqli_select_db($conn, "General");
@@ -93,7 +96,10 @@
 			print("</div>");
 		}
 		print("</div>");
+
+		// Disconnect
 		mysqli_close($conn);
+
 	?>
 
 	<!-- Footer -->
@@ -104,9 +110,9 @@
 		</div>
 	</div>
 
-	<!-- External JS Script -->
+	<!-- External JS scripts -->
 	<script src="javascript/jquery-2.2.0.min.js" language="JavaScript" type="text/javascript"></script>
-	<script src="javascript/generate.index.js"></script>
+	<script src="javascript/generate.index.js" language="JavaScript" type="text/javascript"></script>
 
 </body>
 </html>
