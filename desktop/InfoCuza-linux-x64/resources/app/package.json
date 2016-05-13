@@ -1,0 +1,23 @@
+{
+  "name": "InfoCuza",
+  "version": "1.0.0",
+  "description": "Educational software",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iosifache/Info-Cuza.git"
+  },
+  "keywords": [
+    "InfoCuza"
+  ],
+  "author": "Iosif George Andrei",
+  "license": "CC0-1.0",
+  "homepage": "http://infocuza.esy.es",
+  "devDependencies": {
+    "electron-packager": "^7.0.1",
+    "electron-prebuilt": "^1.0.1"
+  }
+}

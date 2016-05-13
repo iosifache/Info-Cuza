@@ -1,0 +1,86 @@
+Proiect "InfoCuza"
+- categorie: Educational
+- realizator: Iosif George Andrei
+
+
+I. Introducere
+InfoCuza este un proiect educational de tip website. A fost dezvoltat datorita nevoii Colegiului National "Alexandru Ioan Cuza" de a avea o platforma, la materiile Informatica si TIC, care sa indeplineasca urmatoarele cerinte:
+- profesorii sa poata incarca si gestiona lectii
+- elevii sa aiba acces la materialele didactice aflate in programa materiilor enumerate mai sus
+- elevii sa isi poata testa aptitudinile cu ajutorul unor teste
+- sa existe o comunicare intre elev si profesor, chiar daca nu se afla in incinta scolii
+Astfel, la propunerea doamnei profesoare de Informatica, acest proiect a luat nastere, trecand prin urmatoarele etape:
+1. februarie 2016 - martie 2016: lectiile erau statice si necesita o buna cunostiinta a tehnologiilor, folosite in proiect, pentru a incarca sau edita o lectie
+2. martie 2016 - aprilie 2016: implementarea lectiilor cu ajutorul tehnologiei JSON si a framework-ului Moustache.JS, lectiile fiind considerabil mai usor de manipulat
+3. aprilie 2016 - actual: in urma utilizarii bazelor de date SQL, s-a simplificat enorm procesul de gestionare a lectiilor printr-un CMS, lectiile devenind dinamice si aparand un chat pentru ca elevul sa poata interactiona cu profesorul
+
+
+II. Utilizabilitate, originalitate si inovatie
+InfoCuza poate fi accesat ca website, cu ajutorul link-urilor infocuza.ml si infocuza.esy.es, dar si ca aplicatie de desktop, atasata proiectului.
+Odata accesata platforma, elevului ii sunt prezentate, sub forma de grid, materialele incarcate pe website. In partea de sus a paginii, apare link-ul catre Chat, cat si butoane pentru filtrarea materialelor didactice, in functie de Tip(Tutorial sau Quiz) si Materie(Informatica sau TIC). El va selecta materialul pe care il intereseaza si va fi redirectionat catre acesta. In prima faza, el nu va fi intampinat de o pagina goala in proces de incarcare, ci i se va afisa un loader care este mult mai prietenos. In partea de sus, avem un meniu cu link catre pagina principala si, in cazul materialelor in domeniul informaticii, butoane pentru alegerea limbajului de programare, C++ sau Pascal. Imediat dupa, apare o imagine de tip banner, unde sunt afisate titlul, numarul de minute necesare pentru a termina citirea sau rezolvarea materialului si, in cazul tutorialelor, optiune de export. In partea dreapta, este fixat un meniu tip scroll-spy, de unde el poate accesa mult mai usor o anumita sectiune a paginii. Tutorialele sunt impartite pe: introducere, 4 sectiuni numite de profesor, exercitii propuse si o sectiune speciala, unde sunt afisate liste cu obiectivele atinse si profesorii realizatori ai proiectului. Quiz-urile sunt alcatuite din 3 sectiuni cu tipuri diferite de probleme: intrebari cu alegere multipla, intrebari tip output si o intrebare unde elevul este indrumat sa faca drag-and-drop la cateva linii de cod. Odata ce el termina, va apasa pe butonul corespunzator si i se va inapoia punctajul obtinut, o lista cu exercitiile gresite si un scurt text de incurajare. Pagina de chat este usor de utilizat, astfel elevul va putea isi seteze un nume de utilizator, sa seteze un mesaj, iar la apasarea tastei Enter, mesajul lui va aparea in mesaje.
+Profesorii au acces la un CMS, de unde ei pot gestiona materialele incarcate. Pot incarca o lectie noua, pot edita sau sterge una existenta. Pe fiecare pagina aditionala, avem un buton in partea de sus a paginii, unde, la apasare, profesorul va fi redirectionat catre pagina de start a dashboard-ului.
+Din punct de vedere al originalitatii si al inovatiei, InfoCuza este prima platforma de acest tip din Romania, care poate satisface nevoile elevului, cat si pe cele ale profesorului. Ea va implementata in curand in cadrul websiteului Colegiului National "Alexandru Ioan Cuza" Ploiesti si va putea fi utilizata de orice elev si va putea fi gestionata, in prima faza, doar de catre profesorii liceului precizat mai sus.
+
+
+III. Interfata
+Interfata proiectului este una intuitiva, usor de utilizat si de parcurs. Cum am precizat si in sectiunea anterioara a documentatiei, elevul sau profesorul pot accesa pagina-target cu ajutorul unor butoane sau a unor card-uri cu link anexat lor. Aspectul este unul placut, combinand nuante de gri cu alb.
+Designul este unul responsiv, mulandu-se perfect pe rezolutii pana in 960px, rezolutiile mai mici, prezentand bug-uri grafice.
+
+
+IV. Continut si functionalitate
+Continutul este corect din punct de vedere stiintific, cat gramatical, putandu-i-se adauga ulterior diacritice. In viitor, se poate converti intr-o platforma ce poate suporta mai multe limbi, putand oferi astfel suport mai multor nationalitati.
+Tutorialele cuprind diferite tipuri de elemente tip text, cat si posibilitatea de a adauga imagini si videoclipuri, prin care elevul sa inteleaga mai bine lectia. El poate opta, pentru materia Informatica, pentru unul dintre limbajele de programare studiate in scolile romane, adica C++ sau Pascal. La sfarsitul lectiei, lui ii sunt prezentate obiectivele atinse. Pagina Quiz ii permite utilizatorului sa isi testeze cunostiintele prin ajutorul a trei tipuri de exercitii. Dupa ce a terminat, la apasarea unui buton, i se va afisa punctajul obtinut, o lista cu exercitiile gresite si un scurt text de incurajare.
+Continutul poate fi gestionat de catre profesor, cu ajutorul unui CMS, protejat de parola.
+
+
+V. Arhitectura aplicatiei si programare
+Pentru a realiza proiectul, s-au utilizat urmatoarele tehnologii: HTML, CSS, Javascript, PHP si SQL. Acestea au contribuit definitoriu la dezvoltarea aplicatiei. In dezvoltare, s-au folosit urmatoarele resurse externe:
+- framework-ul FontAwesome, pentru preluarea unor imagini tip icon: fortawesome.github.io/Font-Awesome/
+- stylesheet-ul Github Markdown, pentru o lizibilitate mai buna in paginile tip tutorial, respectiv tip quiz: guides.github.com/components/primer/markdown.css
+- platforma Google API Fonts, pentru preluarea fontului Open Sans: www.google.com/fonts
+- framework-ul JQuery: jquery.com
+- framework-ul JQuery UI, pentru realizarea exercitiului drag-and-drop din pagina Quiz: jqueryui.com
+- framework-ul JSPDF, pentru a putea exporta sub forma de PDF pagina tip Tutorial: github.com/MrRio/jsPDF
+- framework-ul bazat pe Node.js, Electron, pentru dezvoltarea aplicatiei desktop: electron.atom.io
+- platforma aplicatii realtime, pentru realizarea chat-ului: www.firebase.com
+- platforma pentru baze de date PHPMyAdmin: www.phpmyadmin.net
+- platforma pentru hostare gratuita: hostinger.co.uk
+- platforma pentru preluarea domeniului .ml: freenom.com
+S-au folosit si alte platforme pentru realizarea unor mici parti:
+- preluare imagini tip pattern: github.com/subtlepatterns/SubtlePatterns
+- generarea imaginii cu font "Star Wars": fontmeme.com/star-wars-font
+- generare fisier .htpasswd: www.htaccesstools.com/htpasswd-generator
+Software-ul porneste de la pagina index.php, atunci cand se acceseaza infocuza.ml, infocuza.esy.es sau aplicatia de desktop. Pagina este generata automat cu ajutorul preluarii datelor din tabelul "General" al bazei de date. Atunci cand utilizatorul alege un material, este directionat catre prima varianta a materialului, adica cea C++ a lectiei informatice. Pentru a accesa varianta Pascal, in PHP, se schimba a 2-a cifra a ID-ului, ce are urmatoarea structura:
+-prima cifra: 1(tutorial)/2(quiz)
+-a doua cifra: 1(Informatica)/2(TIC)
+-a treia cifra(in cazul materiei Informatica): 1(C++)/2(Pascal)
+-a patra cifra: random
+Pentru generarea Tutorial-ului/Quiz-ului se folosesc datele din tabelele "Tutorial"/"Quiz" a bazei de date. Pentru banner, se foloseste fisierul image/patterns, de unde, cu un script Javascript se preia o imagine aleatoare. Pentru optiunea de Export se foloseste JSPDF, exportandu-se doar continutul lectiei, nu pagina completa. Scroll-spy-ul este realizat cu ajutorul Javascript si se actualizeaza automat cand titlul unei sectiuni ajunge in partea de sus a ecranului, iar, la un click pe titlul unei sectiuni, un script tip "smooth scroll" deplaseaza pagina spre acea sectiune. Drag-and-drop-ul din pagina Quiz este realizat cu ajutorul JQueryUI, codul adaugat fiind preluat in algoritmul de afisare a scorului, ce verifica alegerile elevului. Pagina Chat este realizata cu ajutorul Firebase, actualizandu-se automat la adaugarea unui nou mesaj.
+CMS-ul este protejat cu o combinatie de fisiere .htaccess si .htpasswd. Este compus din patru pagini PHP care au o anumita functionalitate:
+- home.php: listarea materialelor si a operatiilor posibile
+- add.php: adaugarea unui nou material Tutorial/Quiz
+- edit.php: editarea unui material deja existent
+- delete.php: stergerea completa din tabelele "General" si "Tutorial"/"Quiz"
+In programarea aplicatiei s-au folosit nume semnificative pentru clase si variabile, astfel, impreuna cu formatul si cu comentariile prezente, codul devine usor de inteles.
+Designul este unul responsiv, mulandu-se perfect pe rezolutii pana in 960px, rezolutiile mai mici, prezentand bug-uri grafice. S-a realizat un test de responsivitate pe diferite videze de download al internetului:
+- GPRS(50 KB/s): 500ms
+- 2G(450 Kb/s): 150ms
+- 3G(750 Kb/s): 40ms
+- 4G(4.0 Mb/s): 20ms
+- WiFi(39 Mb/s): 2ms
+Testarea aplicatiei a fost realizata de catre clase din Colegiul National "Alexandru Ioan Cuza" Ploiesti, la predarea/recapitularea lectiei "Siruri de caractere" la materia Informatica. Utilizatorii nu au primit nicio eroare in aceasta testare, ei ramanand cu o impresie placuta asupra platformei.
+La  dezvoltarea proiectului s-au folosit:
+- sistemul de operare Ubuntu si server local Apache Lampp
+- editorul de text Atom si browser-ul Firefox
+- sistemul de gestionare a versiunilor Git, dezvoltat de catre firma Github. Pana in acest moment, au fost utilizate 3 branch-uri, 10+ commit-uri si au fost rezolvate 3 issue-uri
+Aplicatia nu necesita securitate avansata deoarece lectiile sunt oricum disponibile elevilor. CMS-ul este securizat cu o combinatie de fisiere .htaccess si .htpasswd , astfel, la intrarea pe CMS, in orice pagina, se va cere un nume de utilizator si o parola, in acest caz, cele prestabilite sunt "root" si "root".
+Proiectul a fost hostat gratuit cu ajutorul platformei hostinger.co.uk si s-a realizat un domeniu customizat .ml cu ajutorul freenom.com
+
+
+VI. Dezvoltare ulterioara
+In viitor, aplicatia va fi imbunatatita, adaugandu-i-se mai multe functionalitati. Se va renunta la utilizarea framework-urilor si se va incerca dezvoltare proprie. Codul, in general cel CSS, Javascript si PHP va fi divizat in mai multe fisiere, reducandu-se astfel timpul de incarcare al paginii. Se va schimba structura ID-ului materialelor didactice, devenind din 4 cifre in maximul admis in bazele de date PHPMyAdmin, BIGINT(maximum 18446744073709551615, unsigned).
+Se vor rezolva si micile bug-uri grafice:
+- ascundere scrollbar la incarcarea paginilor cu loader
+- adaugare necontrolata de padding in JQuery
+- accesare ultimele link-uri in scrollspy
+Se va realiza un installer pentru aplicatia de desktop. Se va schimba structura bazelor de date, astfel fiind acceptate alte limbi in afara de romana, si se va publica pe website-ul Colegiului National "Alexandru Ioan Cuza" Ploiesti.
