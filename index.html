@@ -1,86 +1,144 @@
-<html>
+<html ng-app="sampleApp" ng-controller="SampleCtrl">
 <head>
-
-	<!-- Title -->
-	<title>InfoCuza</title>
 
 	<!-- Meta tags -->
 	<meta charset="UTF-8">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="{{data.index_intro_text}}">
+	<meta name="keywords" content="{{data.meta_keywords}}">
+	<meta name="author" content="{{data.meta_author}}">
 
-	<!-- Stylesheets -->
-	<link href="css/basic.css" rel="stylesheet" type="text/css">
-	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200,600,700,900" rel="stylesheet" type="text/css">
+	<!-- Twitter social media tags-->
+	<meta name="twitter:title" content="{{data.title}}">
+	<meta name="twitter:url" content="{{data.meta_url}}">
+	<meta name="twitter:image" content="{{data.meta_image}}">
+	<meta name="twitter:description" content="{{data.index_intro_text}}">
 
-    <!-- Favicon -->
-    <link href="image/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<!-- Facebook social media tags-->
+	<meta property="og:title" content="{{data.title}}">
+	<meta property="og:url" content="{{data.meta_url}}">
+	<meta property="og:image" content="{{data.meta_image}}">
+	<meta property="og:description" content="{{data.index_intro_text}}">
 
-	<!-- Share infos -->
-	<link href="" rel="image_src" type="image/jpeg">
-	<meta content="" property="og:image">
-	<meta content="" property="og:title">
-	<meta content="" property="og:description">
+	<!-- Title -->
+	<title>{{data.title}}: Acasa</title>
 
-	<!-- External JS Script -->
-    <script src="javascript/jquery-2.2.0.min.js" language="JavaScript" type="text/javascript"></script>
-	<script src="javascript/mustache.min.js" language="JavaScript" type="text/javascript"></script>
-    <script src="javascript/generate.index.js" language="JavaScript" type="text/javascript"></script>
-	<script src="data/index.js" language="JavaScript" type="text/javascript"></script>
+	<!-- CSS stylesheets -->
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+	<link href="css/grid-system.css" rel="stylesheet" type="text/css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Favicon -->
+	<link href="image/favicon.png" rel="icon" type="image/png">
+
+	<!-- Javascript scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+	<script src="js/loader.js"></script>
+	<script src="js/firebase.js"></script>
+	<script src="js/menu.js"></script>
+	<script src="js/desktop.js"></script>
 
 </head>
-<body id="mustache-render" type="text/template">
+<body>
 
-	<!-- Loading -->
-    <div class="loading-background" id="loading">
-        <i class="fa fa-5x fa-spinner fa-spin"></i>
-    </div>
-
-    <!-- Header -->
-	<div class="grid">
-	    <div class="header">
-	        <ul>
-				<a href="#" id="category-all"><li class="bold">Toate tutorialele</li></a>
-				<li class="bold">Tip:</li>
-	            <a href="#" id="type-tutorial"><li class="bold swich">Tutorial</li></a>
-	            <a href="#" id="type-quiz"><li class="bold swich">Quiz</li></a>
-				<li class="bold">Materii:</li>
-	            <a href="#" id="category-info"><li class="bold swich">Informatica</li></a>
-	            <a href="#" id="category-tic"><li class="bold swich">TIC</li></a>
-	        </ul>
-			<p>
-				<i class="ultra-bold">Info</i>
-				<i class="normal">Cuza</i>
-			</p>
-	    </div>
+	<!-- Loader -->
+	<script>
+		$('html, body').css({'overflow': 'hidden', 'height': '100%'});
+	</script>
+	<div class="loader">
+		<div class="vertical-center">
+			<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+		</div>
 	</div>
 
-	<!-- Tutorials -->
-	<div class="grid">
-		{{#tutorials}}
-			<div class="col-1-2 card" data-category="{{category}}" data-type="{{type}}">
-				<a href="{{href}}">
-					<div class="card-pattern" id="random">
-						<i class="fa fa-circle fa-5x"></i>
-						<p class="bold">{{title}}</p>
-					</div>
-				</a>
-				<p>{{description}}</p>
-				<div class="card-tuts">
-					<i class="fa fa-th"></i>
-					{{others}}
+	<!-- Intro video -->
+	<div class="intro-video">
+		<video loop autoplay muted>
+			<source src="video/3.mp4" type="video/mp4"></source>
+		</video>
+	</div>
+
+	<!-- Menu -->
+	<div class="nav">
+		<div class="grid">
+			<div class="nav-brand">{{data.title}}</div>
+			<ul class="nav-list">
+				<li><a href="{{data.menu_item_link_1}}">{{data.menu_item_1}}</a></li>
+				<li><a href="{{data.menu_item_link_2}}">{{data.menu_item_2}}</a></li>
+				<li><a href="{{data.menu_item_link_3}}">{{data.menu_item_3}}</a></li>
+				<li class="nav-button"><a href="{{data.menu_button_link}}">{{data.menu_button}}</a></li>
+			</ul>
+			<a href="#"><i class="fa fa-bars nav-mobile-button" id="nav-mobile-button"></i></a>
+		</div>
+	</div>
+
+	<!-- Mobile menu -->
+	<ul class="nav-mobile-list">
+		<li><a href="{{data.menu_item_link_1}}">{{data.menu_item_1}}</a></li>
+		<li><a href="{{data.menu_item_link_2}}">{{data.menu_item_2}}</a></li>
+		<li><a href="{{data.menu_item_link_3}}">{{data.menu_item_3}}</a></li>
+		<li class="nav-button"><a href="{{data.menu_button_link}}">{{data.menu_button}}</a></li>
+	</ul>
+
+	<!-- Intro text-->
+	<div class="intro-section">
+		<div class="grid vertical-center">
+			<h3>{{data.index_intro_title}}</h3>
+			<div class="grid-system">
+				<div class="col-2-3 push-1-6">
+					<p>{{data.index_intro_text}}</p>
+				</div>
+				<div class="col-1-1">
+					<a href="{{data.index_intro_button_link_1}}"><button class="student">{{data.index_intro_button_1}}</button></a>
+					<a href="{{data.index_intro_button_link_2}}"><button class="teacher">{{data.index_intro_button_2}}</button></a>
 				</div>
 			</div>
-		{{/tutorials}}
+		</div>
+	</div>
+
+	<!-- Section -->
+	<div class="section even">
+		<div class="grid vertical-center">
+				<div class="col-1-1">
+					<img src="image/index/student.png">
+				</div>
+				<h3>{{data.index_section_1_title}}</h3>
+				<div class="grid-system">
+					<div class="col-2-3 push-1-6">
+						<p>{{data.index_section_1_text}}</p>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	<!-- Section -->
+	<div class="section odd">
+		<div class="grid vertical-center">
+			<div class="col-1-1">
+				<img src="image/index/teacher.png">
+			</div>
+			<h3>{{data.index_section_2_title}}</h3>
+			<div class="grid-system">
+				<div class="col-2-3 push-1-6">
+					<p>{{data.index_section_2_text}}</p>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!-- Footer -->
-	<div class="grid">
-		<div class="footer">
-			<p>InfoCuza este cea mai buna metoda de a stapani</p>
-			<img src="image/forta.png">
+	<div class="footer">
+		<div class="grid">
+			<div class="col-1-1">
+				<p>{{data.title}}</p>
+			</div>
+			<ul>
+				<a href="{{data.footer_item_link_1}}"><li>{{data.footer_item_1}}</li></a>
+				<a href="{{data.footer_item_link_2}}"><li>{{data.footer_item_2}}</li></a>
+				<a id="desktop"><li>Desktop app</li></a>
+			</ul>
 		</div>
 	</div>
 

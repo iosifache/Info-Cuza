@@ -1,0 +1,104 @@
+In head:
+<script src="http://www.listjs.com/no-cdn/list.pagination.js"></script>
+
+After list:
+<!-- Pagination -->
+<ul class="pagination"></ul>
+
+CSS stylesheet:
+.pagination{
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+}
+.pagination li{
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	border-radius: 15px;
+	margin: 2px;
+	background-color: #bdc3c7;
+	color: #bdc3c7;
+	font-size: 5px;
+	text-align: center;
+	cursor: pointer;
+	counter-increment: none;
+}
+.pagination li.active{
+	background-color: #3498db;
+	color: #3498db;
+}
+
+JQuery script:
+$(document).ready(function(){
+
+	// List.js init
+	var options = {
+  		valueNames: ['title', 'tip', 'views', 'likes'],
+  		page: 2,
+  		plugins: [ListPagination({})] 
+	};
+	var materials = new List('materials', options);
+
+	// Change view
+	var grid = 1;
+	function alert_grid(){
+		$('.pagination li').click(function(){
+			console.log(grid);
+			if(grid==1){
+				swich_view_to_grid();
+			}
+			else{
+				swich_view_to_list();
+			}
+			alert_grid();
+		});
+	}
+	alert_grid();
+
+	// Swich view
+	function swich_view_to_grid(){
+		$('#swich-view-to-grid').addClass("disable");
+		$('#swich-view-to-list').removeClass("disable");
+		$('.material-list').toggleClass('material-list material-grid');
+		grid = 1;
+	}
+	function swich_view_to_list(){
+		$('#swich-view-to-list').addClass("disable");
+		$('#swich-view-to-grid').removeClass("disable");
+		$('.material-grid').toggleClass('material-grid material-list');
+		grid = 0;
+	}
+	$('#swich-view-to-grid').click(function(){
+		swich_view_to_grid();
+	});
+	$('#swich-view-to-list').click(function(){
+		swich_view_to_list();
+	});
+	$('#sort-likes').click(function(){
+		if(grid==1){
+			swich_view_to_grid();
+		}
+		else{
+			swich_view_to_list();
+		}
+	});
+	$('#sort-views').click(function(){
+		if(grid==1){
+			swich_view_to_grid();
+		}
+		else{
+			swich_view_to_list();
+		}
+	});
+
+	// Reset view
+	$('#reset-view').click(function(){
+		$('#search').val('');
+		materials.search();
+	});
+
+});
