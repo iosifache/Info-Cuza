@@ -7,7 +7,7 @@ $(document).ready(function(){
 	// Login
 	chatRef.onAuth(function(authData){
 		if (authData){
-			hat.setUser(authData.uid, authData.facebook.displayName);
+			chat.setUser(authData.uid, authData.facebook.displayName);
 		} 
 		else{
 			chatRef.authWithOAuthPopup("facebook", function(error, authData){

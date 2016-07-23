@@ -1,6 +1,9 @@
 <?php
+
+	// Connect
 	require 'connect.php';
-	require 'showErrors.php';
+
+	// GET data
 	$id = $_GET["id"];
 	$date = $_GET["date"];
 	$title = $_GET["title"];
@@ -47,9 +50,14 @@
 	$drag_code = $_GET["code_drag"];
 	$drag_var = $_GET["code_var"];
 	$correct = json_encode($_GET["correct"]);
+
+	// Query
 	$query = "INSERT INTO materiale VALUES ('$id', '$date', '$title', '$description', '0', '0', '$tip')";
 	$result = mysqli_query($conn, $query);
 	$query = "INSERT INTO teste VALUES ('$id', '$lang', '$intrebare_1', '$raspuns_1', '$intrebare_2', '$raspuns_2', '$intrebare_3', '$raspuns_3', '$intrebare_4', '$raspuns_4', '$intrebare_5', '$raspuns_5', '$output_1', '$code_output_1', '$output_2', '$code_output_2', '$output_3', '$code_output_3', '$drag_enunt', '$drag_code', '$drag_var', '$correct')";
 	$result = mysqli_query($conn, $query);
+
+	// Disconnect
 	mysqli_close($conn);
+	
 ?>

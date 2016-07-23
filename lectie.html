@@ -1,14 +1,16 @@
-<html ng-app="sampleApp" ng-controller="SampleCtrl">
+<html ng-app="sampleApp" ng-controller="SampleCtrl" class="scroll">
 <head>
 
 	<!-- Title -->
 	<title>{{data.title}}: Lectie</title>
 
 	<!-- CSS stylesheets -->
-	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<link href="css/grid-system.css" rel="stylesheet" type="text/css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://guides.github.com/components/primer/markdown.css" rel="stylesheet" type="text/css">
+	<link href="assets/loader/loader.css" rel="stylesheet" type="text/css">
+	<link href="assets/gridSystem/gridSystem.css" rel="stylesheet" type="text/css">
+	<link href="assets/scrollSpy/scrollSpy.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
 
 	<!-- Favicon -->
 	<link href="image/favicon.png" rel="icon" type="image/png">
@@ -20,13 +22,15 @@
 	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
 	<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-	<script src="js/loader.js"></script>
+	<script src="assets/loader/loader.js"></script>
+	<script src="assets/scrollSpy/scrollSpy.js"></script>
+	<script src="assets/smoothScroll/smoothScroll.js"></script>
+	<script src="assets/helpers/helpers.js"></script>
 	<script src="js/firebase.js"></script>
+	<script src="js/generateLesson.js"></script>
 	<script src="js/menu.js"></script>
 	<script src="js/desktop.js"></script>
-	<script src="js/translatePage.js"></script>
-	<script src="js/generateLesson.js"></script>
-	<script src="js/scrollspyLesson.js"></script>
+	<script src="js/translate.js"></script>
 
 </head>
 <body>
@@ -83,6 +87,7 @@
 				<a id="desktop"><li>Desktop app</li></a>
 				<a id="language-button"><li class="hide-on-mobile">Schimba limba materialului</li></a>
 			</ul>
+			<div class="last-pixel"></div>
 		</div>
 	</div>
 

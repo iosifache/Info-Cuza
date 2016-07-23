@@ -1,8 +1,16 @@
 <?php
+	
+	// Connect
 	require 'connect.php';
-	require 'month.php';
+
+	// Require month library
+	require '../assets/month/month.php';
+
+	// Query
 	$query = "SELECT * FROM materiale ORDER BY date DESC";
 	$result = mysqli_query($conn, $query);
+
+	// Material list
 	echo "<ul class='admin-list'>";
 	while ($row = mysqli_fetch_array($result)){
 		$i++;
@@ -34,5 +42,7 @@
 		echo "</li>";
 	}
 	echo "</ul>";
+
+	// Disconnect
 	mysqli_close($conn);
 ?>

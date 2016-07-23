@@ -1,32 +1,6 @@
 $(document).ready(function(){
 
-    // Levenshtein distance
-    function Levenshtein(a, b){
-        if (a.length === 0) return b.length; 
-        if (b.length === 0) return a.length; 
-        var matrix = [];
-        var i;
-        for (i = 0; i <= b.length; i++){
-            matrix[i] = [i];
-        }
-        var j;
-        for (j = 0; j <= a.length; j++){
-            matrix[0][j] = j;
-        }
-        for (i = 1; i <= b.length; i++){
-            for (j = 1; j <= a.length; j++){
-                if (b.charAt(i-1) == a.charAt(j-1)){
-                    matrix[i][j] = matrix[i-1][j-1];
-                } 
-                else{
-                    matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, Math.min(matrix[i][j-1] + 1, matrix[i-1][j] + 1));
-                }
-            }
-        }
-        return matrix[b.length][a.length];
-    };
-
-    // Modal 
+    // Score modal
     function modal_launch(){
         $('html, body').css({'overflow': 'hidden', 'height': '100%'});
         $('.try-modal').css("display", "block");
@@ -36,14 +10,12 @@ $(document).ready(function(){
     }
 
     // Extract URL parameter function
-    $.urlParam = function(name){
-        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-        return results[1] || 0;
-    }
-    var id = $.urlParam('id');
-    var lang = $.urlParam('lang');
+    var id = urlParam('id');
+    var lang = urlParam('lang');
 
     function init(){
+
+        scrollspy(["#multiple", "#output", "#drag", "#termina"]);
 
         // Remove empty scrollspy bullet
         $('.scrollspy a li div').each(function() {
@@ -65,21 +37,6 @@ $(document).ready(function(){
             });
         });
 
-        // Smooth scroll
-        $('a[href*="#"]:not([href="#"])').click(function(){
-            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname){
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-                if (target.length){
-                    var scrollAmount = target.offset().top + 3;
-                    $('html, body').animate({
-                        scrollTop: scrollAmount
-                    }, 1000);
-                 return false;
-                }
-            }
-        });
-
         // JQuery UI
         var text_one=0;
         var text_two=0;
@@ -87,12 +44,12 @@ $(document).ready(function(){
             $("#draggable code").draggable({revert: "invalid"});
             $("#draggable").droppable();
             $(".droppable1").droppable({
-                drop: function(event, ui) {
+                drop: function(event, ui){
                     text_one = ui.draggable.text();
                 }
             });
             $(".droppable2").droppable({
-                drop: function(event, ui) {
+                drop: function(event, ui){
                     text_two = ui.draggable.text();
                 }
             });
@@ -123,6 +80,7 @@ $(document).ready(function(){
                 else if (answers[i]==correct[i]){
                     score+=10;
                 }
+                console.log(i + ": " + answers[i] + "/" + correct[i]);
             }
             score = score.toFixed(2);
             $("#score").text(score);
@@ -139,18 +97,21 @@ $(document).ready(function(){
             modal_launch();
         });
 
+        // Smooth scroll
+        smoothScroll();
+
     }
 
     // Generate
     var correct;
     $.ajax({
         type: "GET",
-        url: "php/test.php",  
+        url: "php/test.php",
         dataType: "html",
         data: {id:id, lang:lang},
         success: function(response){
             obj = JSON.parse(response);
-            $(".nav-mobile-list").after(obj[1]); 
+            $(".nav-mobile-list").after(obj[1]);
             correct = JSON.parse(obj[2]);
             init();
         }

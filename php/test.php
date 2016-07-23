@@ -1,14 +1,25 @@
 <?php
-	require 'connect.php';
-	require 'month.php';
-	$id = $_GET["id"];
-	$lang = $_GET["lang"];
 
-	// Views
+	// Connect
+	require 'connect.php';
+
+	// Require month library
+	require '../assets/month/month.php';
+
+	// GET data
+	$id = (int)$_GET["id"];
+	if (ctype_alpha($_GET["lang"])){
+		$lang = $_GET["lang"];
+	}
+	else{
+		$lang= "";
+	}
+
+	// Incrase views
 	$query = "UPDATE materiale SET views=views+1 WHERE id='$id'";
 	$result = mysqli_query($conn, $query);
 
-	// Generate page header
+	// Page header
 	$query = "SELECT * FROM materiale WHERE id='$id'";
 	$result = mysqli_query($conn, $query);
 	$export = array("","");
@@ -18,8 +29,7 @@
 		$month = date("m",strtotime($date));
 		$export[1] = $export[1] . "<div class='lesson-grid'>";
 		$export[1] = $export[1] . "<div class='intro'>";
-		// $export[1] = $export[1] . "<img src='http://unsplash.it/1800/400?random'>";
-		$export[1] = $export[1] . "<img src='https://source.unsplash.com/random/1800x400'>";
+		$export[1] = $export[1] . "<img src='http://unsplash.it/1800/400?random'>";
 		$export[1] = $export[1] . "<div class='vertical-center'>";
 		$export[1] = $export[1] . "<div class='grid'>";
 		$export[1] = $export[1] . "<h1>" . $row['title'] . "</h3>";
@@ -37,9 +47,8 @@
 			$link='test.html';
 			$data = array('id'=>$id, 'lang'=>'CPP');
 			$link = $link . "?". http_build_query($data);
-			$export[1] = $export[1] . "<a href='" . $link . "'><li>Exporta in C++</li></a>";
+			$export[1] = $export[1] . "<a href='" . $link . "'><li>Schimba in C++</li></a>";
 		}
-		$export[1] = $export[1] . "<li id='export-pdf'>Export to PDF</li>";
 		$export[1] = $export[1] . "</ul>";
 		$export[1] = $export[1] . "<ul>";
 		$export[1] = $export[1] . "<li>" . $row['tip'] . "</li>";
@@ -55,16 +64,16 @@
 		$export[1] = $export[1] . "</div>";
 	}
 
-	// Generate test body
+	//Test body
 	$query = "SELECT * FROM teste WHERE id='$id' AND lang='$lang'";
 	$result = mysqli_query($conn, $query);
 	while ($row = mysqli_fetch_array($result)){
 		$correct = $row["correct"];
-		$export[1] = $export[1] . "<div class='grid'>"; 
-		$export[1] = $export[1] . "<div class='markdown-body'>"; 
+		$export[1] = $export[1] . "<div class='grid'>";
+		$export[1] = $export[1] . "<div class='markdown-body'>";
 
 		// Section one
-		$export[1] = $export[1] . "<h2 id='multiple'>Variante multiple</h2>"; 
+		$export[1] = $export[1] . "<h2 id='multiple'>Variante multiple</h2>";
 		for ($i=1; $i<=5; $i++){
 			$contor = "intrebare_" . $i;
 			$contor_rasp = "raspuns_" . $i;
@@ -82,7 +91,7 @@
 		}
 
 		// Section two
-		$export[1] = $export[1] . "<h2 id='output'>Output</h2>"; 
+		$export[1] = $export[1] . "<h2 id='output'>Output</h2>";
 		for ($i=1; $i<=3; $i++){
 			$contor = "output_" . $i;
 			$contor_rasp = "code_output_" . $i;
@@ -100,11 +109,11 @@
 		$export[1] = $export[1] . "<div class='col-1-2' id='draggable'>";
 		$export[1] = $export[1] . $row["drag_var"];
 		$export[1] = $export[1] . "</div>";
-		$export[1] = $export[1] . "<div class='col-1-1'>"; 
-		$export[1] = $export[1] . "<h2 id='termina'>"; 
-		$export[1] = $export[1] . "<i class='fa fa-caret-square-o-right'></i> Termina testul</h2>";  
-		$export[1] = $export[1] . "</div>"; 
-		$export[1] = $export[1] . "</div>"; 
+		$export[1] = $export[1] . "<div class='col-1-1'>";
+		$export[1] = $export[1] . "<h2 id='termina'>";
+		$export[1] = $export[1] . "<i class='fa fa-caret-square-o-right'></i> Termina testul</h2>";
+		$export[1] = $export[1] . "</div>";
+		$export[1] = $export[1] . "</div>";
 		$export[1] = $export[1] . "</div>";
 		$export[1] = $export[1] . "<ul class='scrollspy'>";
 		$export[1] = $export[1] . "<a href='#multiple'><li><div>Variante multiple</div></li></a>";
@@ -113,10 +122,12 @@
 		$export[1] = $export[1] . "<a href='#termina'><li><div>Termina testul!</div></li></a>";
 		$export[1] = $export[1] . "</ul>";
 
-		// Export to AJAX
+		// Export
 		$export[2] = $correct;
 		echo json_encode($export);
 	}
+
+	// Disconnect
 	mysqli_close($conn);
 	
 ?>

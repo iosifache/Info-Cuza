@@ -1,4 +1,4 @@
-<html ng-app="sampleApp" ng-controller="SampleCtrl">
+<html ng-app="sampleApp" ng-controller="SampleCtrl" class="scroll">
 <head>
 
 	<!-- Title -->
@@ -6,7 +6,10 @@
 
 	<!-- CSS stylesheets -->
 	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<link href="css/grid-system.css" rel="stylesheet" type="text/css">
+	<link href="assets/loader/loader.css" rel="stylesheet" type="text/css">
+	<link href="assets/gridSystem/gridSystem.css" rel="stylesheet" type="text/css">
+	<link href="assets/tabs/tabs.css" rel="stylesheet" type="text/css">
+	<link href="assets/scrollTop/scrollTop.css" rel="stylesheet" type="text/css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 	<!-- Favicon -->
@@ -18,26 +21,28 @@
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 	<script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
-	<script src="js/loader.js"></script>
-    <script src="js/firebase.js"></script>
-    <script src="js/adminVerifyLogged.js"></script>
-    <script src="js/tabs.js"></script>
-    <script src="js/adminTools.js"></script>
+	<script src="assets/helpers/helpers.js"></script>
+	<script src="assets/loader/loader.js"></script>
+	<script src="js/firebase.js"></script>
+	<script src="js/adminVerifyLogged.js"></script>
+	<script src="assets/tabs/tabs.js"></script>
+	<script src="js/adminTools.js"></script>
 	<script src="js/ro.js"></script>
+	<script src="assets/scrollTop/scrollTop.js"></script>
 
 </head>
 <body class="admin">
 
 	<!-- Loader -->
 	<script>
-        $('html, body').css({'overflow': 'hidden', 'height': '100%'});
-    </script>
+		$('html, body').css({'overflow': 'hidden', 'height': '100%'});
+	</script>
 	<div class="loader">
 		<div class="vertical-center">
 			<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
 		</div>
 	</div>
-    
+
 	<!-- Admin menu -->
 	<div class="nav">
 		<div class="grid">
@@ -45,143 +50,208 @@
 			<div class="nav-button-container">
 				<div class="nav-button" id="logout">Logout</div>
 			</div>
+			<div class="nav-list">
+				<li><a href="others/Ghid/admin.pdf" target="_blank">Ghid</a></li>
+			</div>
 		</div>
 	</div>
+
+	<!-- Scroll to top -->
+	<a href="#" class="scrollTop">
+		<i class="fa fa-caret-square-o-up"></i>
+	</a>
 
 	<!-- Tabs -->
 	<div class="tabs-container">
 		<div class="grid">
 			<ul class="tabs">
-				<li class="tab-link current" data-tab="tab-0">Statistic</li>
-				<li class="tab-link" data-tab="tab-1">Firebase</li>
-				<li class="tab-link" data-tab="tab-2">Listare</li>
-				<li class="tab-link no-event" data-tab="tab-3">Editare</li>
-				<li class="tab-link" data-tab="tab-4">Adaugare</li>
+				<li class="tab-link current" data-tab="tab-0">General</li>
+				<li class="tab-link" data-tab="tab-1">Listare</li>
+				<li class="tab-link no-event" data-tab="tab-2">Editare</li>
+				<li class="tab-link" data-tab="tab-3">Adaugare</li>
+				<li class="tab-link" data-tab="tab-4">Alte date</li>
 			</ul>
+
+			<!-- Tab 0 -->
 			<div id="tab-0" class="tab-content current">
 				<ul class="admin-statistics-list">
+
+					<!-- Statistici -->
 					<li>
-						<h3>Total materiale:</h3>
-						<b id="total_materiale"></b>
+						<h3 class="title">Statistic</h3>
 					</li>
 					<li>
-						<h3>Total lectii:</h3>
-						<b id="total_lectii"></b>
+						<div>
+							<h3>Total materiale:</h3>
+							<b id="total_materiale"></b>
+						</div>
+						<div>
+							<h3>Total lectii:</h3>
+							<b id="total_lectii"></b>
+						</div>
+						<div>
+							<h3>Total teste:</h3>
+							<b id="total_teste"></b>
+						</div>
+						<div>
+							<h3>Cel mai mare ID:</h3>
+							<b id="max_id"></b>
+						</div>
+						<div>
+							<h3>Cele mai putine vizualizari:</h3>
+							<b id="min_view"></b>
+						</div>
+						<div>
+							<h3>Cele mai multe vizualizari:</h3>
+							<b id="max_view"></b>
+						</div>
+						<div>
+							<h3>Cele mai putine aprecieri:</h3>
+							<b id="min_like"></b>
+						</div>
+						<div>
+							<h3>Cele mai multe aprecieri:</h3>
+							<b id="max_like"></b>
+						</div>
+						<div>
+							<h3>Cel mai vechi material:</h3>
+							<b id="min_age"></b>
+						</div>
+						<div>
+							<h3>Total admini:</h3>
+							<b id="total_admini"></b>
+						</div>
+					</li>
+
+					<!-- Firebase data edit -->
+					<li>
+						<h3 class="title">Firebase</h3>
 					</li>
 					<li>
-						<h3>Total teste:</h3>
-						<b id="total_teste"></b>
+						<p class="label">Titlu</p>
+						<input type="text" ng-model="data.title" autocomplete="off" spellcheck="false">
+						<p class="label">Meta: Autor</p>
+						<input type="text" ng-model="data.meta_author" autocomplete="off" spellcheck="false">
+						<p class="label">Meta: Image</p>
+						<input type="text" ng-model="data.meta_image" autocomplete="off" spellcheck="false">
+						<p class="label">Meta: Keywords</p>
+						<input type="text" ng-model="data.meta_keywords" autocomplete="off" spellcheck="false">
+						<p class="label">Meta: URL</p>
+						<input type="text" ng-model="data.meta_url" autocomplete="off" spellcheck="false">
+						<p class="label">Meniu: Text buton</p>
+						<input type="text" ng-model="data.menu_button" autocomplete="off" spellcheck="false">
+						<p class="label">Meniu: Link buton</p>
+						<input type="text" ng-model="data.menu_button_link" autocomplete="off" spellcheck="false">
+						<p class="label">Meniu: Item #1</p>
+						<input type="text" ng-model="data.menu_item_1" autocomplete="off" spellcheck="false">
+						<p class="label">Meniu: Item Link #1</p>
+						<input type="text" ng-model="data.menu_item_link_1" autocomplete="off" spellcheck="false">
+						<p class="label"></p>
+						<p class="label">Meniu: Item #2</p>
+						<input type="text" ng-model="data.menu_item_2" autocomplete="off" spellcheck="false">
+						<p class="label">Meniu: Item Link #2</p>
+						<input type="text" ng-model="data.menu_item_link_2" autocomplete="off" spellcheck="false">
+						<p class="label">Meniu: Item #3</p>
+						<input type="text" ng-model="data.menu_item_3" autocomplete="off" spellcheck="false">
+						<p class="label">Meniu: Item Link #3</p>
+						<input type="text" ng-model="data.menu_item_link_3" autocomplete="off" spellcheck="false">
+						<p class="label">Footer: Item #1</p>
+						<input type="text" ng-model="data.footer_item_1" autocomplete="off" spellcheck="false">
+						<p class="label">Footer: Item Link #1</p>
+						<input type="text" ng-model="data.footer_item_link_1" autocomplete="off" spellcheck="false">
+						<p class="label">Footer: Item #2</p>
+						<input type="text" ng-model="data.footer_item_2" autocomplete="off" spellcheck="false">
+						<p class="label">Footer: Item Link #2</p>
+						<input type="text" ng-model="data.footer_item_link_2" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Buton #1</p>
+						<input type="text" ng-model="data.index_intro_button_1" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Buton #2</p>
+						<input type="text" ng-model="data.index_intro_button_2" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Titlu</p>
+						<input type="text" ng-model="data.index_intro_title" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Descriere</p>
+						<input type="text" ng-model="data.index_intro_text" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Link buton #1</p>
+						<input type="text" ng-model="data.index_intro_button_link_1" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Link buton #2</p>
+						<input type="text" ng-model="data.index_intro_button_link_2" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Titlu sectiune #1</p>
+						<input type="text" ng-model="data.index_section_1_title" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Text sectiune #1</p>
+						<input type="text" ng-model="data.index_section_1_text" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Titlu sectiune #2</p>
+						<input type="text" ng-model="data.index_section_2_title" autocomplete="off" spellcheck="false">
+						<p class="label">Index: Text sectiune #2</p>
+						<input type="text" ng-model="data.index_section_2_text" autocomplete="off" spellcheck="false">
+						<p class="label">Contact: Titlu</p>
+						<input type="text" ng-model="data.contact_title" autocomplete="off" spellcheck="false">
+						<p class="label">Contact: Text</p>
+						<input type="text" ng-model="data.contact_text" autocomplete="off" spellcheck="false">
+						<p class="label">Materiale: Placeholder cautare</p>
+						<input type="text" ng-model="data.materiale_search" autocomplete="off" spellcheck="false">
+						<p class="label">Chat: Buton logout</p>
+						<input type="text" ng-model="data.chat_logout" autocomplete="off" spellcheck="false">
+					</li>
+
+					<!-- Adaugare admin -->
+					<li>
+						<h3 class="title">Adaugare admin</h3>
 					</li>
 					<li>
-						<h3>Cel mai mare ID:</h3>
-						<b id="max_id"></b>
+						<p class="label">Adresa email</p>
+						<input type="text" autocomplete="off" spellcheck="false" id="admin_email">
+						<p class="label">Parola</p>
+						<input type="password" autocomplete="off" spellcheck="false" id="admin_password">
+						<div class="center">
+							<button class="admin-button" id="adauga_admin">Publica!</button>
+						</div>
 					</li>
-					<li>
-						<h3>Cele mai putine vizualizari:</h3>
-						<b id="min_view"></b>
-					</li>
-					<li>
-						<h3>Cele mai multe vizualizari:</h3>
-						<b id="max_view"></b>
-					</li>
-					<li>
-						<h3>Cele mai putine aprecieri:</h3>
-						<b id="min_like"></b>
-					</li>
-					<li>
-						<h3>Cele mai multe aprecieri:</h3>
-						<b id="max_like"></b>
-					</li>
-					<li>
-						<h3>Cel mai vechi material:</h3>
-						<b id="min_age"></b>
-					</li>
+
 				</ul>
 			</div>
-			<div id="tab-1" class="tab-content">
-				<p class="label">Titlu</p>
-				<input type="text" ng-model="data.title" autocomplete="off" spellcheck="false">
-				<p class="label">Meta: Autor</p>
-				<input type="text" ng-model="data.meta_author" autocomplete="off" spellcheck="false">
-				<p class="label">Meta: Image</p>
-				<input type="text" ng-model="data.meta_image" autocomplete="off" spellcheck="false">
-				<p class="label">Meta: Keywords</p>
-				<input type="text" ng-model="data.meta_keywords" autocomplete="off" spellcheck="false">
-				<p class="label">Meta: URL</p>
-				<input type="text" ng-model="data.meta_url" autocomplete="off" spellcheck="false">
-				<p class="label">Meniu: Text buton</p>
-				<input type="text" ng-model="data.menu_button" autocomplete="off" spellcheck="false">
-				<p class="label">Meniu: Link buton</p>
-				<input type="text" ng-model="data.menu_button_link" autocomplete="off" spellcheck="false">
-				<p class="label">Meniu: Item #1</p>
-				<input type="text" ng-model="data.menu_item_1" autocomplete="off" spellcheck="false">
-				<p class="label">Meniu: Item Link #1</p>
-				<input type="text" ng-model="data.menu_item_link_1" autocomplete="off" spellcheck="false">
-				<p class="label"></p>
-				<p class="label">Meniu: Item #2</p>
-				<input type="text" ng-model="data.menu_item_2" autocomplete="off" spellcheck="false">
-				<p class="label">Meniu: Item Link #2</p>
-				<input type="text" ng-model="data.menu_item_link_2" autocomplete="off" spellcheck="false">
-				<p class="label">Meniu: Item #3</p>
-				<input type="text" ng-model="data.menu_item_3" autocomplete="off" spellcheck="false">
-				<p class="label">Meniu: Item Link #3</p>
-				<input type="text" ng-model="data.menu_item_link_3" autocomplete="off" spellcheck="false">
-				<p class="label">Footer: Item #1</p>
-				<input type="text" ng-model="data.footer_item_1" autocomplete="off" spellcheck="false">
-				<p class="label">Footer: Item Link #1</p>
-				<input type="text" ng-model="data.footer_item_link_1" autocomplete="off" spellcheck="false">
-				<p class="label">Footer: Item #2</p>
-				<input type="text" ng-model="data.footer_item_2" autocomplete="off" spellcheck="false">
-				<p class="label">Footer: Item Link #2</p>
-				<input type="text" ng-model="data.footer_item_link_2" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Buton #1</p>
-				<input type="text" ng-model="data.index_intro_button_1" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Buton #2</p>
-				<input type="text" ng-model="data.index_intro_button_2" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Titlu</p>
-				<input type="text" ng-model="data.index_intro_title" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Descriere</p>
-				<input type="text" ng-model="data.index_intro_text" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Link buton #1</p>
-				<input type="text" ng-model="data.index_intro_button_link_1" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Link buton #2</p>
-				<input type="text" ng-model="data.index_intro_button_link_2" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Titlu sectiune #1</p>
-				<input type="text" ng-model="data.index_section_1_title" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Text sectiune #1</p>
-				<input type="text" ng-model="data.index_section_1_text" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Titlu sectiune #2</p>
-				<input type="text" ng-model="data.index_section_2_title" autocomplete="off" spellcheck="false">
-				<p class="label">Index: Text sectiune #2</p>
-				<input type="text" ng-model="data.index_section_2_text" autocomplete="off" spellcheck="false">
-				<p class="label">Contact: Titlu</p>
-				<input type="text" ng-model="data.contact_title" autocomplete="off" spellcheck="false">
-				<p class="label">Contact: Text</p>
-				<input type="text" ng-model="data.contact_text" autocomplete="off" spellcheck="false">
-				<p class="label">Materiale: Placeholder cautare</p>
-				<input type="text" ng-model="data.materiale_search" autocomplete="off" spellcheck="false">
-				<p class="label">Chat: Buton logout</p>
-				<input type="text" ng-model="data.chat_logout" autocomplete="off" spellcheck="false">
-			</div>
+
+			<!-- Tab 1 -->
+			<div id="tab-1" class="tab-content"></div>
+
+			<!-- Tab 2 -->
 			<div id="tab-2" class="tab-content"></div>
+
+			<!-- Tab 3 -->
 			<div id="tab-3" class="tab-content">
-				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-			</div>
-			<div id="tab-4" class="tab-content">
 				<p class="label">ID</p>
-				<input type="text" autocomplete="off" spellcheck="false" id="id" class="no-event">
+				<input type="text" autocomplete="off" spellcheck="false" id="add-id">
 				<p class="label">Data</p>
-				<input type="text" autocomplete="off" spellcheck="false" id="date" placeholder="AAAA-LL-ZZ" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])">
+				<input type="text" autocomplete="off" spellcheck="false" id="add-date" placeholder="AAAA-LL-ZZ" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])">
 				<p class="label">Titlu</p>
-				<input type="text" autocomplete="off" spellcheck="false" id="title">
+				<input type="text" autocomplete="off" spellcheck="false" id="add-title">
 				<p class="label">Descriere</p>
-				<input type="text" autocomplete="off" spellcheck="false" id="description">
+				<input type="text" autocomplete="off" spellcheck="false" id="add-description">
 				<p class="label">Tip</p>
-				<input type="text" autocomplete="off" spellcheck="false" id="tip" placeholder="Lectie/ Test" pattern="[Ll]ectie|[Tt]est">
+				<input type="text" autocomplete="off" spellcheck="false" id="add-tip" placeholder="Lectie/ Test" pattern="[Ll]ectie|[Tt]est">
 				<p class="label">Limbaj de programare</p>
-				<input type="text" autocomplete="off" spellcheck="false" id="lang" placeholder="CPP/ PAS" pattern="CPP|PAS">
+				<input type="text" autocomplete="off" spellcheck="false" id="add-lang" placeholder="CPP/ PAS" pattern="CPP|PAS">
 				<div id="added"></div>
 			</div>
+
+			<!-- Tab 4 -->
+			<div id="tab-4" class="tab-content">
+				<ul class="admin-statistics-list">
+
+					<!-- Mesaje -->
+					<li>
+						<h3 class="title">Mesaje</h3>
+					</li>
+					<li id="contact-list"></li>
+
+					<!-- Char camera -->
+					<li>
+						<h3 class="title">Camere chat</h3>
+					</li>
+					<li id="chat-list"></li>
+					
+				</ul>
+			</div>
+
 		</div>
 	</div>
 	

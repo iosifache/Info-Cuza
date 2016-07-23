@@ -1,8 +1,12 @@
 <?php
-
-	// Generate materiale.html page
+	
+	// Connect
 	require 'connect.php';
-	require 'month.php';
+
+	// Require month library
+	require '../assets/month/month.php';
+
+	// Query and generate
 	$query = "SELECT * FROM materiale ORDER BY date DESC";
 	$result = mysqli_query($conn, $query);
 	$i = 0;
@@ -28,15 +32,14 @@
 
 		// Disable links on Infoeducatia test
 		if (($id==000003)||($id==000004)){
-			$link = "#"; 
+			$link = "#";
 		}
 
 		// Continue generating
 		echo "<a href='" .  $link . "'>";
 		echo "<li>";
 		echo "<div class='material-grid'>";
-		// echo "<img src='http://unsplash.it/700/700?random=" . $i . "' class='image'>";
-		echo "<img src='https://source.unsplash.com/random/700x700?image=" . $i . "' class='image'>";
+		echo "<img src='http://unsplash.it/700/700?random=" . $i . "' class='image'>";
 		echo "<div class='hover'></div>";
 		echo "<div class='date'>";
 		echo "<p class='day'>" . $day . "</p>";
@@ -53,6 +56,8 @@
 		echo "</li>";
 		echo "</a>";
 	}
+
+	// Disconnect
 	mysqli_close($conn);
 	
 ?>

@@ -37,9 +37,9 @@ $(document).ready(function(){
 
 	// List.js init
 	var options = {
-  		valueNames: ['title', 'tip', 'views', 'likes'],
-  		page: 2,
-  		plugins: [ListPagination({})] 
+		valueNames: ['title', 'tip', 'views', 'likes'],
+		page: 2,
+		plugins: [ListPagination({})] 
 	};
 	var materials = new List('materials', options);
 

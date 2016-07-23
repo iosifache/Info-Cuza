@@ -1,7 +1,9 @@
 <?php
+	
+	// Connect
 	require 'connect.php';
-	require 'showErrors.php';
 
+	// Export array in which are data introduced
 	$export = array();
 
 	// Count materiales
@@ -58,7 +60,16 @@
 	$row = mysqli_fetch_array($result);
 	array_push($export, $row[0]);
 
+	// Count admins
+	$query = "SELECT COUNT(user) FROM admin LIMIT 1;";
+	$result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_array($result);
+	array_push($export, $row[0]);
+
 	// Export
 	echo json_encode($export);
+
+	// Disconnect
+	mysqli_close($conn);
 
 ?>

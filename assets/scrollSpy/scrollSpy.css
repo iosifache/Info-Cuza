@@ -1,0 +1,96 @@
+/* 
+    
+scrollspy - framework CSS+JS ce poate fi folosit, impreuna cu JQuery, pentru a genera meniuri tip scrollspy pentru paginile web
+
+Obs: Acst meniu poseda link-uri ce conduc la categorii. Pentru un efect estetic mai bun, se recomanda implementarea cu smoothScroll.
+Obs: Cand user-ul scroleaza pana in partea de jos a paginii, unele sectiuni pot avea inaltimi mici, astfel nefiind evidentiate in scrollspy. Aceast bug se poate rezolva prin plasarea in ultimul element a unui div cu clasa "last-pixel".
+
+Utilizare:
+1. Includere CSS
+<link href="scrollspy.css" rel="stylesheet" type="text/css">
+2. Inludere JS
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="scrollspy.js"></script>
+3. Exemplu cod HTML
+<ul class='scrollspy'>
+<a href='#sectiune1'><li><div>Sectiune #1</div></li></a>
+<a href='#sectiune2'><li><div>Sectiune #2</div></li></a>
+<a href='#sectiune3'><li><div>Sectiune #3</div></li></a>
+<div id="sectiune1"></div>
+<div id="sectiune2"></div>
+<div id="sectiune3"></div>
+</ul>
+<div class="last-pixel"></div>
+<script>
+    scrollspy(["#sectiune1","#sectiune2","#sectiune3"]);
+</script>
+
+*/
+
+.scrollspy{
+display: none;
+}
+
+.footer-pixel{
+display: none;
+}
+
+@media only screen and (min-width: 1540px){
+
+.scrollspy{
+display: block;
+position: absolute;
+right: 0;
+top: 360px;
+margin: 0;
+padding: 0;
+list-style-type: none;
+transition: none;
+}
+
+.scrollspy li{
+display: block;
+width: 10px;
+height: 10px;
+margin: 10px;
+background-color: #3498db;
+border-radius: 10px;
+opacity: .3;
+cursor: pointer;
+}
+
+.scrollspy li div{
+display: block;
+position: relative;
+left: -200px;
+width: 200px;
+height: 10px;
+padding-right: 10px;
+font-size: 10px;
+line-height: 10px;
+text-align: right;
+opacity: 0;
+}
+
+.scrollspy li div:empty < .scrollspy li{
+display: none;
+}
+
+.scrollspy li:hover > div{
+opacity: 1;
+}
+
+.scrollspy li:hover{
+opacity: 1;
+}
+
+.footer-pixel{
+position: absolute;
+display: inline-block;
+bottom: 0;
+right: 0;
+width: 1px;
+height: 1px;
+}
+
+}

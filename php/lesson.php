@@ -1,15 +1,25 @@
 <?php
 
+	// Connect
 	require 'connect.php';
-	require 'month.php';
-	$id = $_GET["id"];
-	$lang = $_GET["lang"];
 
-	// Views
+	// Require month library
+	require '../assets/month/month.php';
+
+	// GET data
+	$id = (int)$_GET["id"];
+	if (ctype_alpha($_GET["lang"])){
+		$lang = $_GET["lang"];
+	}
+	else{
+		$lang= "";
+	}
+
+	// Increase views
 	$query = "UPDATE materiale SET views=views+1 WHERE id='$id'";
 	$result = mysqli_query($conn, $query);
 
-	// Generate page header
+	// Page header
 	$query = "SELECT * FROM materiale WHERE id='$id'";
 	$result = mysqli_query($conn, $query);
 	$export = array();
@@ -19,8 +29,7 @@
 		$month = date("m",strtotime($date));
 		echo "<div class='lesson-grid'>";
 		echo "<div class='intro'>";
-		// echo "<img src='http://unsplash.it/1800/400?random'>";
-		echo "<img src='https://source.unsplash.com/random/1800x400'>";
+		echo "<img src='http://unsplash.it/1800/400?random'>";
 		echo "<div class='vertical-center'>";
 		echo "<div class='grid'>";
 		echo "<h1>" . $row['title'] . "</h3>";
@@ -56,7 +65,7 @@
 		echo "</div>";
 	}
 
-	// Generate lesson body
+	// Lesson body
 	$query = "SELECT * FROM lectii WHERE id='$id' AND lang='$lang'";
 	$result = mysqli_query($conn, $query);
 	while ($row = mysqli_fetch_array($result)){
@@ -95,6 +104,8 @@
 		echo "<a href='#felicitari'><li><div>Felicitari!</div></li></a>";
 		echo "</ul>";
 	}
+
+	// Disconnect
 	mysqli_close($conn);
 
 ?>

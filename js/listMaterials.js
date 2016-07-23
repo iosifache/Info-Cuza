@@ -14,7 +14,7 @@ $(document).ready(function(){
         grid = 0;
     }
 
-    // Init
+    // Initialization
     function init(){
 
         // List.js init
@@ -45,13 +45,13 @@ $(document).ready(function(){
 
     }
 
-	// Get materials 
-	$.ajax({
+    // Get materials 
+    $.ajax({
         type: "GET",
-        url: "php/materials.php",             
-        dataType: "html",           
-        success: function(response){                    
-            $(".list").html(response); 
+        url: "php/materials.php",
+        dataType: "html",
+        success: function(response){
+            $(".list").html(response);
             init();
         }
     });

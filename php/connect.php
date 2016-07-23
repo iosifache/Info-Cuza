@@ -1,10 +1,6 @@
 <?php
 
-	//  Hostinger
-	// define('server', 'mysql.hostinger.co.uk');
-	// define('user', 'u412979867_data');
-	// define('password', 'u412979867');
-	// define('database', 'u412979867_data');
+	// Pentru conectarea la Hostinger, se va contacta autorul.
 	
 	// Localhost
 	define('server', 'localhost');
