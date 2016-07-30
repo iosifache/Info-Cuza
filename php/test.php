@@ -3,6 +3,9 @@
 	// Connect
 	require 'connect.php';
 
+	// Background
+	require 'backgroundUse.php';
+
 	// Require month library
 	require '../assets/month/month.php';
 
@@ -27,9 +30,14 @@
 		$date = $row['date'];
 		$day = date("d",strtotime($date));
 		$month = date("m",strtotime($date));
-		$export[1] = $export[1] . "<div class='lesson-grid'>";
+		$export[1] = $export[1] . "<div class='lesson-grid wow fadeIn' data-wow-delay='2s' data-wow-duration='0.3s'>";
 		$export[1] = $export[1] . "<div class='intro'>";
-		$export[1] = $export[1] . "<img src='http://unsplash.it/1800/400?random'>";
+		if ($used==0){
+			$export[1] = $export[1] . "<img src='http://unsplash.it/1800/400?random'>";
+		}
+		else{
+			$export[1] = $export[1] . "<div class='image-container'><div class='image-pattern' style='background: url(assets/randomSubtle/randomSubtle.php);'></div></div>";
+		}
 		$export[1] = $export[1] . "<div class='vertical-center'>";
 		$export[1] = $export[1] . "<div class='grid'>";
 		$export[1] = $export[1] . "<h1>" . $row['title'] . "</h3>";

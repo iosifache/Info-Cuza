@@ -536,6 +536,21 @@ i{
 	overflow: hidden;
 }
 
+.material-grid div.image-container{
+	position: absolute;
+	display: inline-block;
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+.material-grid div.image-pattern{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background-repeat: repeat !important;
+}
+
 .material-grid .date{
 	position: absolute;
 	display: inline-block;
@@ -649,6 +664,21 @@ i{
 	overflow: hidden;
 }
 
+.material-list div.image-container{
+	position: absolute;
+	display: inline-block;
+	width: 50%;
+	overflow: hidden;
+	height: 200px;
+}
+
+.material-list div.image-pattern{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background-repeat: repeat !important;
+}
+
 .material-list .date{
 	position: absolute;
 	display: inline-block;
@@ -745,17 +775,31 @@ i{
 	z-index: 0; 
 }
 
+.lesson-grid .intro div.image-container{
+	position: absolute;
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+	z-index: 0; 
+}
+
+.lesson-grid .intro div.image-pattern{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background-repeat: repeat;
+}
+
 .lesson-grid .intro div{
 	position: relative;
 	color: #fff;
 	text-align: center;
 }
 
-.lesson-grid .intro h3{
+.lesson-grid .intro h1{
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	font-size: 26px;
 	font-weight: 700;
 }
 
@@ -793,7 +837,7 @@ i{
 
 /* Material contents */
 .markdown-body{
-	margin: 20px 0;
+	margin: 20px;
 }
 
 .markdown-body ul{
@@ -1057,6 +1101,7 @@ i{
 
 .admin-button{
 	height: 40px;
+	margin: 5px 0;
 	background: #bdc3c7;
 	color: #fff;
 	border: 2px solid #fff;

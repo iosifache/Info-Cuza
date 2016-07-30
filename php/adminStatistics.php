@@ -7,25 +7,25 @@
 	$export = array();
 
 	// Count materiales
-	$query = "SELECT COUNT(id) FROM materiale LIMIT 1;";
+	$query = "SELECT COUNT(id) FROM materiale LIMIT 1";
 	$result = mysqli_query($conn, $query);
 	$row = mysqli_fetch_array($result);
 	array_push($export, $row[0]);
 
 	// Count lesson
-	$query = "SELECT COUNT(date) FROM materiale WHERE tip='Lectie' LIMIT 1;";
+	$query = "SELECT COUNT(date) FROM materiale WHERE tip='Lectie' LIMIT 1";
 	$result = mysqli_query($conn, $query);
 	$row = mysqli_fetch_array($result);
 	array_push($export, $row[0]);
 
 	// Count tests
-	$query = "SELECT COUNT(date) FROM materiale WHERE tip='Test' LIMIT 1;";
+	$query = "SELECT COUNT(date) FROM materiale WHERE tip='Test' LIMIT 1";
 	$result = mysqli_query($conn, $query);
 	$row = mysqli_fetch_array($result);
 	array_push($export, $row[0]);
 
 	// Get max ID
-	$query = "SELECT MAX(id) FROM materiale LIMIT 1;";
+	$query = "SELECT MAX(id) FROM materiale LIMIT 1";
 	$result = mysqli_query($conn, $query);
 	$row = mysqli_fetch_array($result);
 	array_push($export, sprintf("%06d", $row[0]));
@@ -55,13 +55,19 @@
 	array_push($export, $row[0]);
 
 	// Get oldest post
-	$query = "SELECT MIN(date) FROM materiale LIMIT 1;";
+	$query = "SELECT date FROM materiale ORDER BY date LIMIT 1";
 	$result = mysqli_query($conn, $query);
 	$row = mysqli_fetch_array($result);
 	array_push($export, $row[0]);
 
 	// Count admins
-	$query = "SELECT COUNT(user) FROM admin LIMIT 1;";
+	$query = "SELECT COUNT(user) FROM admin LIMIT 1";
+	$result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_array($result);
+	array_push($export, $row[0]);
+
+	// Get newest post
+	$query = "SELECT date FROM materiale ORDER BY date DESC LIMIT 1";
 	$result = mysqli_query($conn, $query);
 	$row = mysqli_fetch_array($result);
 	array_push($export, $row[0]);

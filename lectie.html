@@ -6,8 +6,10 @@
 
 	<!-- CSS stylesheets -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" type="text/css">
 	<link href="https://guides.github.com/components/primer/markdown.css" rel="stylesheet" type="text/css">
 	<link href="assets/loader/loader.css" rel="stylesheet" type="text/css">
+	<link href="assets/contextMenu/contextMenu.css" rel="stylesheet" type="text/css">
 	<link href="assets/gridSystem/gridSystem.css" rel="stylesheet" type="text/css">
 	<link href="assets/scrollSpy/scrollSpy.css" rel="stylesheet" type="text/css">
 	<link href="css/style.css" rel="stylesheet" type="text/css">
@@ -22,7 +24,9 @@
 	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
 	<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 	<script src="assets/loader/loader.js"></script>
+	<script src="assets/contextMenu/contextMenu.js"></script>
 	<script src="assets/scrollSpy/scrollSpy.js"></script>
 	<script src="assets/smoothScroll/smoothScroll.js"></script>
 	<script src="assets/helpers/helpers.js"></script>
@@ -31,6 +35,7 @@
 	<script src="js/menu.js"></script>
 	<script src="js/desktop.js"></script>
 	<script src="js/translate.js"></script>
+	<script src="js/animation.js"></script>
 
 </head>
 <body>
@@ -74,6 +79,16 @@
 		<li><a href="{{data.menu_item_link_3}}">{{data.menu_item_3}}</a></li>
 		<li class="nav-button"><a href="{{data.menu_button_link}}">{{data.menu_button}}</a></li>
 	</ul>
+
+	<!-- Context menu -->
+	<div class="context">
+		<ul>
+			<a href="{{data.context_item_link_1}}"><li><i class="fa fa-home"></i>{{data.context_item_1}}</li></a>
+			<a href="{{data.context_item_link_2}}"><li><i class="fa fa-book"></i>{{data.context_item_2}}</li></a>
+			<a href="{{data.context_item_link_3}}"><li><i class="fa fa-comments"></i>{{data.context_item_3}}</li></a>
+			<a href="{{data.context_item_link_4}}"><li><i class="fa fa-lock"></i>{{data.context_item_4}}</li></a>
+		</ul>
+	</div>
 
 	<!-- Footer -->
 	<div class="footer">

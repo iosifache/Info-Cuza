@@ -49,7 +49,6 @@ $(document).ready(function(){
 $(document).ajaxStart(function(){
     requestLoaderShow();
 });
-
 $(document).ajaxComplete(function(){
     requestLoaderClose();
 });

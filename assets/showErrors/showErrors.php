@@ -4,7 +4,7 @@
 	
 	showErrors - librarie PHP folosita pentru a afisa erorile
 
-	Utilizare: se ca include in fisierul PHP ale carui erori doresc a fi afisate
+	Utilizare: se va include in fisierul PHP ale carui erori doresc a fi afisate
 	require 'showErrors.php';
 
 	*/

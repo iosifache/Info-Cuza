@@ -118,6 +118,10 @@
 							<b id="min_age"></b>
 						</div>
 						<div>
+							<h3>Cel mai nou material:</h3>
+							<b id="max_age"></b>
+						</div>
+						<div>
 							<h3>Total admini:</h3>
 							<b id="total_admini"></b>
 						</div>
@@ -146,7 +150,6 @@
 						<input type="text" ng-model="data.menu_item_1" autocomplete="off" spellcheck="false">
 						<p class="label">Meniu: Item Link #1</p>
 						<input type="text" ng-model="data.menu_item_link_1" autocomplete="off" spellcheck="false">
-						<p class="label"></p>
 						<p class="label">Meniu: Item #2</p>
 						<input type="text" ng-model="data.menu_item_2" autocomplete="off" spellcheck="false">
 						<p class="label">Meniu: Item Link #2</p>
@@ -163,6 +166,22 @@
 						<input type="text" ng-model="data.footer_item_2" autocomplete="off" spellcheck="false">
 						<p class="label">Footer: Item Link #2</p>
 						<input type="text" ng-model="data.footer_item_link_2" autocomplete="off" spellcheck="false">
+						<p class="label">Context meniu: Item #1</p>
+						<input type="text" ng-model="data.context_item_1" autocomplete="off" spellcheck="false">
+						<p class="label">Context meniu: Item Link #1</p>
+						<input type="text" ng-model="data.context_item_link_1" autocomplete="off" spellcheck="false">
+						<p class="label">Context meniu: Item #2</p>
+						<input type="text" ng-model="data.context_item_2" autocomplete="off" spellcheck="false">
+						<p class="label">Context meniu: Item Link #2</p>
+						<input type="text" ng-model="data.context_item_link_2" autocomplete="off" spellcheck="false">
+						<p class="label">Context meniu: Item #3</p>
+						<input type="text" ng-model="data.context_item_3" autocomplete="off" spellcheck="false">
+						<p class="label">Context meniu: Item Link #3</p>
+						<input type="text" ng-model="data.context_item_link_3" autocomplete="off" spellcheck="false">
+						<p class="label">Context meniu: Item #4</p>
+						<input type="text" ng-model="data.context_item_4" autocomplete="off" spellcheck="false">
+						<p class="label">Context meniu: Item Link #4</p>
+						<input type="text" ng-model="data.context_item_link_4" autocomplete="off" spellcheck="false">
 						<p class="label">Index: Buton #1</p>
 						<input type="text" ng-model="data.index_intro_button_1" autocomplete="off" spellcheck="false">
 						<p class="label">Index: Buton #2</p>
@@ -207,6 +226,34 @@
 						</div>
 					</li>
 
+					<!-- Schimbare background -->
+					<li>
+						<h3 class="title">Schimbare background</h3>
+					</li>
+					<li>
+						<div>
+							<h3>Background utilizat:</h3>
+							<b id="background-used"></b>
+						</div>
+						<div class="center">
+							<button class="admin-button" id="change_back">Schimba</button>
+						</div>
+					</li>
+
+					<!-- Folosire animatii -->
+					<li>
+						<h3 class="title">Folosire animatii</h3>
+					</li>
+					<li>
+						<div>
+							<h3>Status:</h3>
+							<b id="animation"></b>
+						</div>
+						<div class="center">
+							<button class="admin-button" id="change_animation">Schimba</button>
+						</div>
+					</li>
+
 				</ul>
 			</div>
 
@@ -239,13 +286,13 @@
 
 					<!-- Mesaje -->
 					<li>
-						<h3 class="title">Mesaje</h3>
+						<h3 class="title">Mesaje <a href="https://infocuza-contact.firebaseio.com"><i class="fa fa-link"></i></a></h3>
 					</li>
 					<li id="contact-list"></li>
 
 					<!-- Char camera -->
 					<li>
-						<h3 class="title">Camere chat</h3>
+						<h3 class="title">Camere chat <a href="https://infocuza-chat.firebaseio.com"><i class="fa fa-link"></i></a></h3>
 					</li>
 					<li id="chat-list"></li>
 					

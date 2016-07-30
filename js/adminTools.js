@@ -37,6 +37,7 @@ function initGeneral(){
             $(".admin-statistics-list #max_like").html(responses[7]);
             $(".admin-statistics-list #min_age").html(responses[8]);
             $(".admin-statistics-list #total_admini").html(responses[9]);
+            $(".admin-statistics-list #max_age").html(responses[10]);
         }
     });
 
@@ -72,6 +73,48 @@ function initGeneral(){
             }
         });
     });
+
+    // Background
+    $.ajax({
+        type: "GET",
+        url: "php/backgroundList.php",
+        success: function(response){
+            $("#background-used").text(response);
+        }
+    });
+    $("button#change_back").click(function(){
+        $.ajax({
+            type: "GET",
+            url: "php/backgroundChange.php",
+            success: function(response){
+                $("#background-used").text(response);
+            }
+        });
+    });
+
+    // Aniamtion
+    $.ajax({
+        type: "GET",
+        url: "php/animationCheck.php",
+        success: function(response){
+            if (response=="0"){
+                $("#animation").text("Dezactivate");
+            }
+            else if (response=="1"){
+                $("#animation").text("Activate");
+            }
+        }
+    });
+    $("button#change_animation").click(function(){
+        $.ajax({
+            type: "GET",
+            url: "php/animationChange.php",
+            success: function(response){
+                $("#animation").text(response);
+            }
+        });
+    });
+
 }
 
 function initList(){
@@ -470,7 +513,7 @@ function initAdd(){
         if (($("#add-tip").val()=="Test")||($("#add-tip").val()=="test")){
 
             // Append elements
-            $("#added").html("<p class='label'>Intrebare #1</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_1' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_1' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_1' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_1' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_1' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Intrebare #2</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_2' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_2' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_2' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_2' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_2' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Intrebare #3</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_3' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_3' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_3' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_3' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_3' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Intrebare #4</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_4' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_4' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_4' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_4' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_4' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Intrebare #5</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_5' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_5' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_5' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_5' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_5' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Output #1</p><input type='text' autocomplete='off' spellcheck='false' id='output_1' placeholder='Enunt'><textarea id='code_output_1'></textarea><input type='text' autocomplete='off' spellcheck='false' id='corect_6' placeholder='Raspuns corect'><p class='label'>Output #2</p><input type='text' autocomplete='off' spellcheck='false' id='output_2' placeholder='Enunt'><textarea id='code_output_2'></textarea><input type='text' autocomplete='off' spellcheck='false' id='corect_7' placeholder='Raspuns corect'><p class='label'>Output #3</p><input type='text' autocomplete='off' spellcheck='false' id='output_3' placeholder='Enunt'><textarea id='code_output_3'></textarea><input type='text' autocomplete='off' spellcheck='false' id='corect_8' placeholder='Raspuns corect'><p class='label'>Drag and drop</p><input type='text' autocomplete='off' spellcheck='false' id='drag' placeholder='Enunt'><textarea id='code_drag'></textarea><textarea id='code_var'></textarea><input type='text' autocomplete='off' spellcheck='false' id='corect_9' placeholder='Raspuns corect #1'><input type='text' autocomplete='off' spellcheck='false' id='corect_10' placeholder='Raspuns corect #2'><button class='admin-button' id='publica_test'>Publica</button>");            
+            $("#added").html("<p class='label'>Intrebare #1</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_1' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_1' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_1' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_1' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_1' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Intrebare #2</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_2' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_2' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_2' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_2' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_2' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Intrebare #3</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_3' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_3' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_3' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_3' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_3' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Intrebare #4</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_4' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_4' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_4' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_4' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_4' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Intrebare #5</p><input type='text' autocomplete='off' spellcheck='false' id='intrebare_5' placeholder='Enunt'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_1_intrebare_5' placeholder='Raspuns #1'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_2_intrebare_5' placeholder='Raspuns #2'><input type='text' autocomplete='off' spellcheck='false' id='raspuns_3_intrebare_5' placeholder='Raspuns #3'><input type='text' autocomplete='off' spellcheck='false' id='corect_5' placeholder='Raspuns corect' pattern='1|2|3'><p class='label'>Output #1</p><input type='text' autocomplete='off' spellcheck='false' id='output_1' placeholder='Enunt'><textarea id='code_output_1'></textarea><input type='text' autocomplete='off' spellcheck='false' id='corect_6' placeholder='Raspuns corect'><p class='label'>Output #2</p><input type='text' autocomplete='off' spellcheck='false' id='output_2' placeholder='Enunt'><textarea id='code_output_2'></textarea><input type='text' autocomplete='off' spellcheck='false' id='corect_7' placeholder='Raspuns corect'><p class='label'>Output #3</p><input type='text' autocomplete='off' spellcheck='false' id='output_3' placeholder='Enunt'><textarea id='code_output_3'></textarea><input type='text' autocomplete='off' spellcheck='false' id='corect_8' placeholder='Raspuns corect'><p class='label'>Drag and drop</p><input type='text' autocomplete='off' spellcheck='false' id='drag' placeholder='Enunt'><textarea id='code_drag'></textarea><textarea id='code_var'></textarea><input type='text' autocomplete='off' spellcheck='false' id='corect_9' placeholder='Raspuns corect #1'><input type='text' autocomplete='off' spellcheck='false' id='corect_10' placeholder='Raspuns corect #2'><button class='admin-button' id='publica_test'>Publica</button>");
 
             // TinyMCE init
             var sections = ["#code_output_1", "#code_output_2", "#code_output_3", "#sectiune_3", "#code_drag", "#code_var"];
@@ -560,9 +603,10 @@ function initAdd(){
 function initContact(){
 
     // Contact
+    $('#contact-list').empty();
     var messageList = $('#contact-list');
     var messagesRef = new Firebase('https://infocuza-contact.firebaseio.com/');
-    messagesRef.orderByChild("date").limitToLast(5).on('child_added', function (snapshot){
+    messagesRef.limitToLast(5).on('child_added', function (snapshot){
         var key = snapshot.key();
         var data = snapshot.val();
         var name = data.name || "Anonymous";
@@ -572,9 +616,10 @@ function initContact(){
     });
 
     // Chat rooms
+    $('#chat-list').empty();
     var chatList = $('#chat-list');
     var messagesRef = new Firebase('https://infocuza-chat.firebaseio.com/room-metadata/');
-    messagesRef.orderByChild("createdAt").limitToLast(5).on('child_added', function (snapshot){
+    messagesRef.limitToLast(5).on('child_added', function (snapshot){
         var key = snapshot.key();
         var data = snapshot.val();
         var name = data.name;
@@ -589,6 +634,9 @@ $(document).ready(function(){
 
     // Tab 0: General(default)
     initGeneral();
+    $('li.tab-link[data-tab=tab-0]').click(function(){
+         initGeneral();
+    });
 
     // Tab 1: List
     $('li.tab-link[data-tab=tab-1]').click(function(){
@@ -601,6 +649,8 @@ $(document).ready(function(){
     });
 
     // Tab 4: Contact and chat
-    initContact();
+    $('li.tab-link[data-tab=tab-4]').click(function(){
+        initContact();
+    });
     
 });

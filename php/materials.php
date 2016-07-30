@@ -3,6 +3,9 @@
 	// Connect
 	require 'connect.php';
 
+	// Background
+	require 'backgroundUse.php';
+
 	// Require month library
 	require '../assets/month/month.php';
 
@@ -39,7 +42,12 @@
 		echo "<a href='" .  $link . "'>";
 		echo "<li>";
 		echo "<div class='material-grid'>";
-		echo "<img src='http://unsplash.it/700/700?random=" . $i . "' class='image'>";
+		if ($used==0){
+			echo "<img src='http://unsplash.it/700/700?random=" . $i . "' class='image'>";
+		}
+		else{
+			echo "<div class='image-container'><div class='image-pattern' style='background: url(assets/randomSubtle/randomSubtle.php?random=". $i . ");'></div></div>";
+		}
 		echo "<div class='hover'></div>";
 		echo "<div class='date'>";
 		echo "<p class='day'>" . $day . "</p>";

@@ -30,4 +30,9 @@ $(document).ready(function(){
 		chatRef.unauth();
 	})
 
+	// Prevent right click
+	document.addEventListener('contextmenu', function(e){
+		e.preventDefault();
+	}, false);
+
 });
