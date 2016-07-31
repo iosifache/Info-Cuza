@@ -105,7 +105,7 @@
 			$contor_rasp = "code_output_" . $i;
 			$export[1] = $export[1] . "<p>" . $i . ". " . $row[$contor] ."</p>";
 			$export[1] = $export[1] . $row[$contor_rasp];
-			$export[1] = $export[1] . "Output: <input type='text'></input>";
+			$export[1] = $export[1] . "<p class='label'>Output: </p><input type='text'></input>";
 		}
 
 		// Section three
