@@ -43,7 +43,7 @@
 		echo "<h1>" . $row['title'] . "</h3>";
 		echo "<p>" . $row['description']  . "</p>";
 		echo "<ul>";
-		echo "<li id='like'><i class='fa fa-heart'></i> Apreciaza" . $liked . "</li>";
+		echo "<li id='like'><i class='fa fa-heart'></i> Apreciaza" . $row['likes'] . "</li>";
 		$link = '';
 		if ($lang=="CPP"){
 			$link='lectie.html';

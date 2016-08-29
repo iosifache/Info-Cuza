@@ -20,14 +20,21 @@ $(document).ready(function(){
                 $this.css("display", "none");
         });
 
-        // Export to PDF
-        var doc = new jsPDF();
+        // export-pdf
         $('#export-pdf').click(function(){
-            doc.fromHTML($('.markdown-body').html(), 10, 10,{
-                'width': 185
+          var doc = new jsPDF();
+            html2canvas($('.markdown-body'),{
+              onrendered: function(canvas){
+                height = canvas.height*185/canvas.width;
+                img = canvas.toDataURL("image/png");
+                doc.addImage(img, 'JPEG', 10, 10, 185, height);
+              }
             });
-            docName = "Lectie" + lang.toString() + "_" +id.toString() + ".pdf";
-            doc.save(docName);
+            setTimeout(function(){
+              docName = "Lectie" + lang.toString() + "_" +id.toString() + ".pdf";
+              doc.save(docName);
+            }, 500);
+
         });
 
         // Like

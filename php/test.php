@@ -8,6 +8,7 @@
 
 	// Require month library
 	require '../assets/month/month.php';
+	require '../assets/showErrors/showErrors.php';
 
 	// GET data
 	$id = (int)$_GET["id"];
@@ -43,7 +44,7 @@
 		$export[1] = $export[1] . "<h1>" . $row['title'] . "</h3>";
 		$export[1] = $export[1] . "<p>" . $row['description']  . "</p>";
 		$export[1] = $export[1] . "<ul>";
-		$export[1] = $export[1] . "<li id='like'><i class='fa fa-heart'></i> Apreciaza" . $liked . "</li>";
+		$export[1] = $export[1] . "<li id='like'><i class='fa fa-heart'></i> Apreciaza</li>";
 		$link = '';
 		if ($lang=="CPP"){
 			$link='test.html';
@@ -132,10 +133,14 @@
 
 		// Export
 		$export[2] = $correct;
-		echo json_encode($export);
+		// echo $export[1];
+		echo(json_encode($export));
+
+		// json_last_error_msg();
+
 	}
 
 	// Disconnect
 	mysqli_close($conn);
-	
+
 ?>

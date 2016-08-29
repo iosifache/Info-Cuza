@@ -1,5 +1,5 @@
 <?php
-	
+
 	// Connect
 	require 'connect.php';
 
@@ -12,6 +12,7 @@
 
 	// Material list
 	echo "<ul class='admin-list'>";
+	$i = 0;
 	while ($row = mysqli_fetch_array($result)){
 		$i++;
 		$date = $row['date'];
@@ -25,7 +26,7 @@
 			$link='lectie.html';
 			$data = array('id'=>$id, 'lang'=>'CPP');
 			$link = $link . "?". http_build_query($data);
-		} 
+		}
 		else if ($tip=='Test'){
 			$link='test.html';
 			$data = array('id'=>$id, 'lang'=>'CPP');

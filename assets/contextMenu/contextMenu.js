@@ -1,4 +1,4 @@
-/* 
+/*
 
 contextMenu - framework CSS+JS ce poate fi folosit, impreuna cu FontAwesome si JQuery, pentru a genera o biblioteca de link-uri utile, activata la click dreapta
 
@@ -24,27 +24,28 @@ Utilizare:
 $(document).ready(function(){
 	"use strict";
     document.addEventListener('contextmenu', function(e){
-		$(".context").css("opacity", "1");
-        if ((e.pageY < $(window).width()/2)&&((e.pageX < $(window).height()/2))){
-            $(".context").show().css("top", e.pageY + "px");
-            $(".context").show().css("left", e.pageX + "px");
-        }
-        else{
-            $(".context").show().css("top", e.pageY + "px");
-            $(".context").show().css("left", e.pageX - 180 + "px");
-        }
+		if (e.pageX < $(window).width()){
+			$(".context").css("opacity", "1");
+			$(".context").show().css("top", e.pageY + "px");
+			if (e.pageX < $(window).width()/2){
+				$(".context").show().css("left", e.pageX + "px");
+			}
+			else{
+				$(".context").show().css("left", e.pageX - 180 + "px");
+			}
+		}
         e.preventDefault();
     }, false);
     document.addEventListener('click', function(e){
     	$(".context").css("opacity","0");
         setTimeout(function(){
             $(".context").hide();
-        },250)
+        },250);
     }, false);
     document.addEventListener('mousewheel', function(e){
     	$(".context").css("opacity","0");
         setTimeout(function(){
             $(".context").hide();
-        },250)
+        },250);
     }, false);
 })

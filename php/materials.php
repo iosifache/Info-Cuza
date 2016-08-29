@@ -1,5 +1,5 @@
 <?php
-	
+
 	// Connect
 	require 'connect.php';
 
@@ -26,10 +26,15 @@
 			$link = 'lectie.html';
 			$data = array('id'=>$id, 'lang'=>'CPP');
 			$link = $link . "?". http_build_query($data);
-		} 
+		}
 		else if ($tip == 'Test'){
 			$link = 'test.html';
 			$data = array('id'=>$id, 'lang'=>'CPP');
+			$link = $link . "?". http_build_query($data);
+		}
+		else if ($tip == 'Problema'){
+			$link = 'problema.html';
+			$data = array('id'=>$id);
 			$link = $link . "?". http_build_query($data);
 		}
 
@@ -67,5 +72,5 @@
 
 	// Disconnect
 	mysqli_close($conn);
-	
+
 ?>

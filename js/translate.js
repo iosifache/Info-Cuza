@@ -1,5 +1,6 @@
 // Load Google Translate elements
 function googleTranslateElementInit(){
+	// new google.translate.TranslateElement({pageLanguage: 'ro', includedLanguages: 'ro,en',layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
 	new google.translate.TranslateElement({pageLanguage: 'ro', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
 }
 

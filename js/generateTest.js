@@ -111,8 +111,10 @@ $(document).ready(function(){
         data: {id:id, lang:lang},
         success: function(response){
             obj = JSON.parse(response);
+            console.log(obj);
             $(".nav-mobile-list").after(obj[1]);
             correct = JSON.parse(obj[2]);
+            console.log(correct);
             init();
         }
     });

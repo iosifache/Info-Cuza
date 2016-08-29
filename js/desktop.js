@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+
 	// Windows
 	if (navigator.appVersion.indexOf("Win")!=-1){
 		$("#desktop").attr("href", "desktop/Windows.zip")
@@ -12,7 +13,7 @@ $(document).ready(function(){
 
 	// Linux
 	if (navigator.appVersion.indexOf("Linux")!=-1){
-		$("#desktop").attr("href", "desktop/Windows.zip")
+		$("#desktop").attr("href", "desktop/Linux.zip")
 	}
-	
+
 });

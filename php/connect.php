@@ -1,11 +1,11 @@
 <?php
 
 	// Pentru conectarea la Hostinger, se va contacta autorul.
-	
+
 	// Localhost
 	define('server', 'localhost');
 	define('user', 'root');
-	define('password', 'root');
+	define('password', '');
 	define('database', 'infocuza');
 
 	// Connect
