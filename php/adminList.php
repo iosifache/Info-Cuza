@@ -32,6 +32,11 @@
 			$data = array('id'=>$id, 'lang'=>'CPP');
 			$link = $link . "?". http_build_query($data);
 		}
+		else if ($tip=='Problema'){
+			$link='problema.html';
+			$data = array('id'=>$id);
+			$link = $link . "?". http_build_query($data);
+		}
 		echo "<li data-id='" . $id . "' data-tip='" . $tip . "'>";
 		echo "<a href='" . $link . "'><h3>" . $row['title'] . "</h3></a>";
 		echo "<i class='fa fa-bookmark'></i><p>" . $id . "</p>";

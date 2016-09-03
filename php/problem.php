@@ -28,12 +28,29 @@
 		echo "<div class='intro'>";
 		if ($used==0){
 			echo "<img src='http://unsplash.it/1800/400?random'>";
+			echo "<div class='vertical-center'>";
+			echo "<div class='grid'>";
 		}
 		else{
-			echo "<div class='image-container'><div class='image-pattern' style='background: url(assets/randomSubtle/randomSubtle.php);'></div></div>";
+			$backgroundJSON = file_get_contents('http://localhost/InfoCuza/assets/randomSubtle/randomSubtleTuples.php');
+			$background = json_decode($backgroundJSON);
+			$backgroundUsed = $background[0];
+			$backgroundLocation = $background[1];
+			echo "<div class='image-container'><div class='image-pattern' style='background: url(" . $backgroundUsed . ");'></div></div>";
+			if ($backgroundLocation == "Light"){
+				$color = 1;
+			}
+			else if ($backgroundLocation == "Dark"){
+				$color = 0;
+			}
+			echo "<div class='vertical-center'>";
+			if ($color == 0){
+				echo "<div class='grid white'>";
+			}
+			else if ($color == 1){
+				echo "<div class='grid black'>";
+			}
 		}
-		echo "<div class='vertical-center'>";
-		echo "<div class='grid'>";
 		echo "<h1>" . $row['title'] . "</h3>";
 		echo "<p>" . $row['description']  . "</p>";
 		echo "<ul>";

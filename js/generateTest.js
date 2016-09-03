@@ -58,8 +58,12 @@ $(document).ready(function(){
         // Calculate score
         $("#termina").click(function(){
             var answers = [];
-            var i, score = 0;
+            var i,  lev = 0;
             var uncompleted = 0;
+            var correctAnswers = new Array();
+            var incorrectAnswers = new Array();
+            var levAnswers = new Array();
+            var score = 0;
             for(i=1;i<=5;i++){
                 answers.push($("ul li input[type=radio][name='"+i+"']:checked").val());
             }
@@ -71,16 +75,27 @@ $(document).ready(function(){
             for(i=0;i<=9;i++){
                 if ((i>=5)&&(i<=7)&&(/[a-z]/i.test(correct[i]))){
                     if (answers[i]){
-                        var lev = Levenshtein(answers[i], correct[i]);
-                        if (lev<4){
+                        lev = Levenshtein(answers[i], correct[i]);
+                        if (lev == 0){
+                            score+=10;
+                            correctAnswers.push(i);
+                        }
+                        else if (lev<4){
                             score+=(3-lev)/3*10;
+                            levAnswers.push(i);
+                        }
+                        else{
+                            incorrectAnswers.push(i);
                         }
                     }
                 }
                 else if (answers[i]==correct[i]){
                     score+=10;
+                    correctAnswers.push(i);
                 }
-                console.log(i + ": " + answers[i] + "/" + correct[i]);
+                else if (answers[i]!=correct[i]){
+                    incorrectAnswers.push(i);
+                }
             }
             score = score.toFixed(2);
             $("#score").text(score);
@@ -94,6 +109,9 @@ $(document).ready(function(){
             else{
                 $('#result-message').text(messages[2]);
             }
+            $('#result-message').append('<br><br><p><i class="fa fa-check"></i> Raspunsuri corecte: ' + correctAnswers.toString())
+            $('#result-message').append('<p><i class="fa fa-times"></i> Raspunsuri incorecte: ' + incorrectAnswers.toString());
+            $('#result-message').append('<p><i class="fa fa-puzzle-piece"></i> Raspunsuri partiale: ' + levAnswers.toString());
             modal_launch();
         });
 
@@ -111,10 +129,8 @@ $(document).ready(function(){
         data: {id:id, lang:lang},
         success: function(response){
             obj = JSON.parse(response);
-            console.log(obj);
             $(".nav-mobile-list").after(obj[1]);
             correct = JSON.parse(obj[2]);
-            console.log(correct);
             init();
         }
     });

@@ -1,5 +1,5 @@
 // Refresh material
-function refreshMaterial(){ 
+function refreshMaterial(){
     $.ajax({
         type: "GET",
         url: "php/adminList.php",
@@ -41,6 +41,33 @@ function initGeneral(){
         }
     });
 
+    // Right Click
+    $(".contextLabel").contextmenu(function(e){
+        if (e.pageX < $(window).width()){
+            $(".context").css("opacity", "1");
+            $(".context").show().css("top", e.pageY + "px");
+            if (e.pageX < $(window).width()/2){
+                $(".context").show().css("left", e.pageX + "px");
+            }
+            else{
+                $(".context").show().css("left", e.pageX - 180 + "px");
+            }
+        }
+        e.preventDefault();
+    });
+    document.addEventListener('click', function(e){
+    	$(".context").css("opacity","0");
+        setTimeout(function(){
+            $(".context").hide();
+        },250);
+    }, false);
+    document.addEventListener('mousewheel', function(e){
+    	$(".context").css("opacity","0");
+        setTimeout(function(){
+            $(".context").hide();
+        },250);
+    }, false);
+
     // Add new admin
     $('button#adauga_admin').click(function(){
         var email = $('#tab-0 #admin_email').val();
@@ -72,6 +99,7 @@ function initGeneral(){
                 }
             }
         });
+
     });
 
     // Background
@@ -131,16 +159,20 @@ function initList(){
 
             // Delete material
             $('p.delete').click(function(){
-                var id = $(this).parent().parent().data("id");
-                var tip = $(this).parent().parent().data("tip");
-                $.ajax({
-                    type: "GET",
-                    url: "php/adminDelete.php",
-                    data: {id:id, tip:tip},
-                    dataType: "html",
-                    success: function(response){
-                        refreshMaterial();
-                    }
+                $(this).text("Esti sigur ca vrei sa il stergi?");
+                $(this).css("color", "#e74c3c");
+                $(this).click(function(){
+                    var id = $(this).parent().parent().data("id");
+                    var tip = $(this).parent().parent().data("tip");
+                    $.ajax({
+                        type: "GET",
+                        url: "php/adminDelete.php",
+                        data: {id:id, tip:tip},
+                        dataType: "html",
+                        success: function(response){
+                            refreshMaterial();
+                        }
+                    });
                 });
             });
 
@@ -236,7 +268,7 @@ function initEdit(){
         $.ajax({
             type: "GET",
             url: "php/adminEditLesson.php",
-            data: {id: id, date: date, title: title, description: description, tip: tip, lang: lang, introducere: introducere, nume_sectiune_1: nume_sectiune_1, nume_sectiune_2: nume_sectiune_2, nume_sectiune_3: nume_sectiune_3, nume_sectiune_4: nume_sectiune_4, nume_sectiune_5: nume_sectiune_5, sectiune_1: sectiune_1, sectiune_2: sectiune_2, sectiune_3: sectiune_3, sectiune_4: sectiune_4, sectiune_5: sectiune_5, aplicare: aplicare, exercitii: exercitii, felicitari: felicitari},             
+            data: {id: id, date: date, title: title, description: description, tip: tip, lang: lang, introducere: introducere, nume_sectiune_1: nume_sectiune_1, nume_sectiune_2: nume_sectiune_2, nume_sectiune_3: nume_sectiune_3, nume_sectiune_4: nume_sectiune_4, nume_sectiune_5: nume_sectiune_5, sectiune_1: sectiune_1, sectiune_2: sectiune_2, sectiune_3: sectiune_3, sectiune_4: sectiune_4, sectiune_5: sectiune_5, aplicare: aplicare, exercitii: exercitii, felicitari: felicitari},
             dataType: "html",
             success: function(response){
                 console.log(response);
@@ -273,7 +305,7 @@ function initEdit(){
         $.ajax({
             type: "GET",
             url: "php/adminEditLesson.php",
-            data: {id: id, date: date, title: title, description: description, tip: tip, lang: lang, introducere: introducere, nume_sectiune_1: nume_sectiune_1, nume_sectiune_2: nume_sectiune_2, nume_sectiune_3: nume_sectiune_3, nume_sectiune_4: nume_sectiune_4, nume_sectiune_5: nume_sectiune_5, sectiune_1: sectiune_1, sectiune_2: sectiune_2, sectiune_3: sectiune_3, sectiune_4: sectiune_4, sectiune_5: sectiune_5, aplicare: aplicare, exercitii: exercitii, felicitari: felicitari},             
+            data: {id: id, date: date, title: title, description: description, tip: tip, lang: lang, introducere: introducere, nume_sectiune_1: nume_sectiune_1, nume_sectiune_2: nume_sectiune_2, nume_sectiune_3: nume_sectiune_3, nume_sectiune_4: nume_sectiune_4, nume_sectiune_5: nume_sectiune_5, sectiune_1: sectiune_1, sectiune_2: sectiune_2, sectiune_3: sectiune_3, sectiune_4: sectiune_4, sectiune_5: sectiune_5, aplicare: aplicare, exercitii: exercitii, felicitari: felicitari},
             dataType: "html",
             success: function(response){
                 console.log(response);
@@ -347,7 +379,7 @@ function initEdit(){
         $.ajax({
             type: "GET",
             url: "php/adminEditTest.php",
-            data: {id: id, date: date, title: title, description :description, tip: tip, lang: lang, intrebare_1: intrebare_1, raspuns_1_intrebare_1: raspuns_1_intrebare_1, raspuns_2_intrebare_1: raspuns_2_intrebare_1, raspuns_3_intrebare_1: raspuns_3_intrebare_1, intrebare_2: intrebare_2, raspuns_1_intrebare_2: raspuns_1_intrebare_2, raspuns_2_intrebare_2: raspuns_2_intrebare_2, raspuns_3_intrebare_2: raspuns_3_intrebare_2, intrebare_3: intrebare_3, raspuns_1_intrebare_3: raspuns_1_intrebare_3, raspuns_2_intrebare_3: raspuns_2_intrebare_3, raspuns_3_intrebare_3: raspuns_3_intrebare_3, intrebare_4: intrebare_4, raspuns_1_intrebare_4: raspuns_1_intrebare_4, raspuns_2_intrebare_4: raspuns_2_intrebare_4, raspuns_3_intrebare_4: raspuns_3_intrebare_4, intrebare_5: intrebare_5, raspuns_1_intrebare_5: raspuns_1_intrebare_5, raspuns_2_intrebare_5: raspuns_2_intrebare_5, raspuns_3_intrebare_5: raspuns_3_intrebare_5, output_1: output_1, code_output_1: code_output_1, output_2: output_2, code_output_2: code_output_2, output_3: output_3, code_output_3: code_output_3, drag: drag, code_drag: code_drag, code_var: code_var, correct: correct},             
+            data: {id: id, date: date, title: title, description :description, tip: tip, lang: lang, intrebare_1: intrebare_1, raspuns_1_intrebare_1: raspuns_1_intrebare_1, raspuns_2_intrebare_1: raspuns_2_intrebare_1, raspuns_3_intrebare_1: raspuns_3_intrebare_1, intrebare_2: intrebare_2, raspuns_1_intrebare_2: raspuns_1_intrebare_2, raspuns_2_intrebare_2: raspuns_2_intrebare_2, raspuns_3_intrebare_2: raspuns_3_intrebare_2, intrebare_3: intrebare_3, raspuns_1_intrebare_3: raspuns_1_intrebare_3, raspuns_2_intrebare_3: raspuns_2_intrebare_3, raspuns_3_intrebare_3: raspuns_3_intrebare_3, intrebare_4: intrebare_4, raspuns_1_intrebare_4: raspuns_1_intrebare_4, raspuns_2_intrebare_4: raspuns_2_intrebare_4, raspuns_3_intrebare_4: raspuns_3_intrebare_4, intrebare_5: intrebare_5, raspuns_1_intrebare_5: raspuns_1_intrebare_5, raspuns_2_intrebare_5: raspuns_2_intrebare_5, raspuns_3_intrebare_5: raspuns_3_intrebare_5, output_1: output_1, code_output_1: code_output_1, output_2: output_2, code_output_2: code_output_2, output_3: output_3, code_output_3: code_output_3, drag: drag, code_drag: code_drag, code_var: code_var, correct: correct},
             dataType: "html",
             success: function(response){
                 console.log(response);
@@ -400,7 +432,7 @@ function initEdit(){
         $.ajax({
             type: "GET",
             url: "php/adminEditTest.php",
-            data: {id: id, date: date, title: title, description :description, tip: tip, lang: lang, intrebare_1: intrebare_1, raspuns_1_intrebare_1: raspuns_1_intrebare_1, raspuns_2_intrebare_1: raspuns_2_intrebare_1, raspuns_3_intrebare_1: raspuns_3_intrebare_1, intrebare_2: intrebare_2, raspuns_1_intrebare_2: raspuns_1_intrebare_2, raspuns_2_intrebare_2: raspuns_2_intrebare_2, raspuns_3_intrebare_2: raspuns_3_intrebare_2, intrebare_3: intrebare_3, raspuns_1_intrebare_3: raspuns_1_intrebare_3, raspuns_2_intrebare_3: raspuns_2_intrebare_3, raspuns_3_intrebare_3: raspuns_3_intrebare_3, intrebare_4: intrebare_4, raspuns_1_intrebare_4: raspuns_1_intrebare_4, raspuns_2_intrebare_4: raspuns_2_intrebare_4, raspuns_3_intrebare_4: raspuns_3_intrebare_4, intrebare_5: intrebare_5, raspuns_1_intrebare_5: raspuns_1_intrebare_5, raspuns_2_intrebare_5: raspuns_2_intrebare_5, raspuns_3_intrebare_5: raspuns_3_intrebare_5, output_1: output_1, code_output_1: code_output_1, output_2: output_2, code_output_2: code_output_2, output_3: output_3, code_output_3: code_output_3, drag: drag, code_drag: code_drag, code_var: code_var, correct: correct},             
+            data: {id: id, date: date, title: title, description :description, tip: tip, lang: lang, intrebare_1: intrebare_1, raspuns_1_intrebare_1: raspuns_1_intrebare_1, raspuns_2_intrebare_1: raspuns_2_intrebare_1, raspuns_3_intrebare_1: raspuns_3_intrebare_1, intrebare_2: intrebare_2, raspuns_1_intrebare_2: raspuns_1_intrebare_2, raspuns_2_intrebare_2: raspuns_2_intrebare_2, raspuns_3_intrebare_2: raspuns_3_intrebare_2, intrebare_3: intrebare_3, raspuns_1_intrebare_3: raspuns_1_intrebare_3, raspuns_2_intrebare_3: raspuns_2_intrebare_3, raspuns_3_intrebare_3: raspuns_3_intrebare_3, intrebare_4: intrebare_4, raspuns_1_intrebare_4: raspuns_1_intrebare_4, raspuns_2_intrebare_4: raspuns_2_intrebare_4, raspuns_3_intrebare_4: raspuns_3_intrebare_4, intrebare_5: intrebare_5, raspuns_1_intrebare_5: raspuns_1_intrebare_5, raspuns_2_intrebare_5: raspuns_2_intrebare_5, raspuns_3_intrebare_5: raspuns_3_intrebare_5, output_1: output_1, code_output_1: code_output_1, output_2: output_2, code_output_2: code_output_2, output_3: output_3, code_output_3: code_output_3, drag: drag, code_drag: code_drag, code_var: code_var, correct: correct},
             dataType: "html",
             success: function(response){
                 console.log(response);
@@ -489,8 +521,8 @@ function initAdd(){
                 $.ajax({
                     type: "GET",
                     url: "php/adminAddLesson.php",
-                    data: {id: id, date: date, title: title, description: description, tip: tip, lang: lang, introducere: introducere, nume_sectiune_1: nume_sectiune_1, nume_sectiune_2: nume_sectiune_2, nume_sectiune_3: nume_sectiune_3, nume_sectiune_4: nume_sectiune_4, nume_sectiune_5: nume_sectiune_5, sectiune_1: sectiune_1, sectiune_2: sectiune_2, sectiune_3: sectiune_3, sectiune_4: sectiune_4, sectiune_5: sectiune_5, aplicare: aplicare, exercitii: exercitii, felicitari: felicitari},             
-                    dataType: "html",   
+                    data: {id: id, date: date, title: title, description: description, tip: tip, lang: lang, introducere: introducere, nume_sectiune_1: nume_sectiune_1, nume_sectiune_2: nume_sectiune_2, nume_sectiune_3: nume_sectiune_3, nume_sectiune_4: nume_sectiune_4, nume_sectiune_5: nume_sectiune_5, sectiune_1: sectiune_1, sectiune_2: sectiune_2, sectiune_3: sectiune_3, sectiune_4: sectiune_4, sectiune_5: sectiune_5, aplicare: aplicare, exercitii: exercitii, felicitari: felicitari},
+                    dataType: "html",
                     success: function(response){
                         console.log(response);
                         $('#tab-3 input').val("");
@@ -579,9 +611,9 @@ function initAdd(){
                 }
                 $.ajax({
                     type: "GET",
-                    url: "php/adminAddTest.php",  
-                    data: {id: id, date: date, title: title, description :description, tip: tip, lang: lang, intrebare_1: intrebare_1, raspuns_1_intrebare_1: raspuns_1_intrebare_1, raspuns_2_intrebare_1: raspuns_2_intrebare_1, raspuns_3_intrebare_1: raspuns_3_intrebare_1, intrebare_2: intrebare_2, raspuns_1_intrebare_2: raspuns_1_intrebare_2, raspuns_2_intrebare_2: raspuns_2_intrebare_2, raspuns_3_intrebare_2: raspuns_3_intrebare_2, intrebare_3: intrebare_3, raspuns_1_intrebare_3: raspuns_1_intrebare_3, raspuns_2_intrebare_3: raspuns_2_intrebare_3, raspuns_3_intrebare_3: raspuns_3_intrebare_3, intrebare_4: intrebare_4, raspuns_1_intrebare_4: raspuns_1_intrebare_4, raspuns_2_intrebare_4: raspuns_2_intrebare_4, raspuns_3_intrebare_4: raspuns_3_intrebare_4, intrebare_5: intrebare_5, raspuns_1_intrebare_5: raspuns_1_intrebare_5, raspuns_2_intrebare_5: raspuns_2_intrebare_5, raspuns_3_intrebare_5: raspuns_3_intrebare_5, output_1: output_1, code_output_1: code_output_1, output_2: output_2, code_output_2: code_output_2, output_3: output_3, code_output_3: code_output_3, drag: drag, code_drag: code_drag, code_var: code_var, correct: correct},             
-                    dataType: "html",   
+                    url: "php/adminAddTest.php",
+                    data: {id: id, date: date, title: title, description :description, tip: tip, lang: lang, intrebare_1: intrebare_1, raspuns_1_intrebare_1: raspuns_1_intrebare_1, raspuns_2_intrebare_1: raspuns_2_intrebare_1, raspuns_3_intrebare_1: raspuns_3_intrebare_1, intrebare_2: intrebare_2, raspuns_1_intrebare_2: raspuns_1_intrebare_2, raspuns_2_intrebare_2: raspuns_2_intrebare_2, raspuns_3_intrebare_2: raspuns_3_intrebare_2, intrebare_3: intrebare_3, raspuns_1_intrebare_3: raspuns_1_intrebare_3, raspuns_2_intrebare_3: raspuns_2_intrebare_3, raspuns_3_intrebare_3: raspuns_3_intrebare_3, intrebare_4: intrebare_4, raspuns_1_intrebare_4: raspuns_1_intrebare_4, raspuns_2_intrebare_4: raspuns_2_intrebare_4, raspuns_3_intrebare_4: raspuns_3_intrebare_4, intrebare_5: intrebare_5, raspuns_1_intrebare_5: raspuns_1_intrebare_5, raspuns_2_intrebare_5: raspuns_2_intrebare_5, raspuns_3_intrebare_5: raspuns_3_intrebare_5, output_1: output_1, code_output_1: code_output_1, output_2: output_2, code_output_2: code_output_2, output_3: output_3, code_output_3: code_output_3, drag: drag, code_drag: code_drag, code_var: code_var, correct: correct},
+                    dataType: "html",
                     success: function(response){
                         $('#tab-3 input').val("");
                         tinyMCE.get('code_output_1').setContent('');
@@ -606,8 +638,9 @@ function initContact(){
     $('#contact-list').empty();
     var messageList = $('#contact-list');
     var messagesRef = new Firebase('https://infocuza-contact.firebaseio.com/');
+    var messagesDelete = new Firebase('https://infocuza-contact.firebaseio.com/');
     messagesRef.limitToLast(5).on('child_added', function (snapshot){
-        var key = snapshot.key();
+        var keySnapshot = snapshot.key();
         var data = snapshot.val();
         var name = data.name || "Anonymous";
         var message = data.message;
@@ -649,8 +682,6 @@ $(document).ready(function(){
     });
 
     // Tab 4: Contact and chat
-    $('li.tab-link[data-tab=tab-4]').click(function(){
-        initContact();
-    });
-    
+    initContact();
+
 });

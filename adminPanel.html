@@ -7,9 +7,11 @@
 	<!-- CSS stylesheets -->
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	<link href="assets/loader/loader.css" rel="stylesheet" type="text/css">
+	<link href="assets/contextMenu/contextMenu.css" rel="stylesheet" type="text/css">
 	<link href="assets/gridSystem/gridSystem.css" rel="stylesheet" type="text/css">
 	<link href="assets/tabs/tabs.css" rel="stylesheet" type="text/css">
 	<link href="assets/scrollTop/scrollTop.css" rel="stylesheet" type="text/css">
+
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 	<!-- Favicon -->
@@ -21,11 +23,13 @@
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 	<script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
 	<script src="assets/helpers/helpers.js"></script>
 	<script src="assets/loader/loader.js"></script>
 	<script src="js/firebase.js"></script>
 	<script src="js/adminVerifyLogged.js"></script>
 	<script src="assets/tabs/tabs.js"></script>
+	<script src="js/adminLocation.js"></script>
 	<script src="js/adminTools.js"></script>
 	<script src="js/ro.js"></script>
 	<script src="assets/scrollTop/scrollTop.js"></script>
@@ -75,6 +79,15 @@
 			<!-- Tab 0 -->
 			<div id="tab-0" class="tab-content current">
 				<ul class="admin-statistics-list">
+
+					<!-- Map -->
+					<li>
+						<h3 class="title">Locatie a utilizatorilor</h3>
+					</li>
+					<li>
+						<canvas id="tara" width="100" height="50"></canvas>
+						<canvas id="judet" width="100" height="50"></canvas>
+					</li>
 
 					<!-- Statistici -->
 					<li>
@@ -132,7 +145,7 @@
 						<h3 class="title">Firebase</h3>
 					</li>
 					<li>
-						<p class="label">Titlu</p>
+						<p class="label">Meta: Titlu</p>
 						<input type="text" ng-model="data.title" autocomplete="off" spellcheck="false">
 						<p class="label">Meta: Autor</p>
 						<input type="text" ng-model="data.meta_author" autocomplete="off" spellcheck="false">
@@ -166,21 +179,29 @@
 						<input type="text" ng-model="data.footer_item_2" autocomplete="off" spellcheck="false">
 						<p class="label">Footer: Item Link #2</p>
 						<input type="text" ng-model="data.footer_item_link_2" autocomplete="off" spellcheck="false">
-						<p class="label">Context meniu: Item #1</p>
+						<p class="label">Footer: Item #3</p>
+						<input type="text" ng-model="data.footer_item_3" autocomplete="off" spellcheck="false">
+						<p class="label">Footer: Item Link #3</p>
+						<input type="text" ng-model="data.footer_item_link_3" autocomplete="off" spellcheck="false">
+						<p class="label">Footer: Item #4</p>
+						<input type="text" ng-model="data.footer_item_4" autocomplete="off" spellcheck="false">
+						<p class="label">Footer: Item Link #4</p>
+						<input type="text" ng-model="data.footer_item_link_4" autocomplete="off" spellcheck="false">
+						<p class="label contextLabel">Meniu context: Item #1<i>Click pe titlu pentru preview</i></p>
 						<input type="text" ng-model="data.context_item_1" autocomplete="off" spellcheck="false">
-						<p class="label">Context meniu: Item Link #1</p>
+						<p class="label contextLabel">Meniu context: Item Link #1<i>Click pe titlu pentru preview</i></p>
 						<input type="text" ng-model="data.context_item_link_1" autocomplete="off" spellcheck="false">
-						<p class="label">Context meniu: Item #2</p>
+						<p class="label contextLabel">Meniu context: Item #2<i>Click pe titlu pentru preview</i></p>
 						<input type="text" ng-model="data.context_item_2" autocomplete="off" spellcheck="false">
-						<p class="label">Context meniu: Item Link #2</p>
+						<p class="label contextLabel">Meniu context: Item Link #2<i>Click pe titlu pentru preview</i></p>
 						<input type="text" ng-model="data.context_item_link_2" autocomplete="off" spellcheck="false">
-						<p class="label">Context meniu: Item #3</p>
+						<p class="label contextLabel">Meniu context: Item #3<i>Click pe titlu pentru preview</i></p>
 						<input type="text" ng-model="data.context_item_3" autocomplete="off" spellcheck="false">
-						<p class="label">Context meniu: Item Link #3</p>
+						<p class="label contextLabel">Meniu context: Item Link #3<i>Click pe titlu pentru preview</i></p>
 						<input type="text" ng-model="data.context_item_link_3" autocomplete="off" spellcheck="false">
-						<p class="label">Context meniu: Item #4</p>
+						<p class="label contextLabel">Meniu context: Item #4<i>Click pe titlu pentru preview</i></p>
 						<input type="text" ng-model="data.context_item_4" autocomplete="off" spellcheck="false">
-						<p class="label">Context meniu: Item Link #4</p>
+						<p class="label contextLabel">Meniu context: Item Link #4<i>Click pe titlu pentru preview</i></p>
 						<input type="text" ng-model="data.context_item_link_4" autocomplete="off" spellcheck="false">
 						<p class="label">Index: Buton #1</p>
 						<input type="text" ng-model="data.index_intro_button_1" autocomplete="off" spellcheck="false">
@@ -210,6 +231,22 @@
 						<input type="text" ng-model="data.materiale_search" autocomplete="off" spellcheck="false">
 						<p class="label">Chat: Buton logout</p>
 						<input type="text" ng-model="data.chat_logout" autocomplete="off" spellcheck="false">
+						<p class="label">Mentor: Admin</p>
+						<input type="text" ng-model="data.mentor_admin" autocomplete="off" spellcheck="false">
+						<p class="label">Mentor: Chat</p>
+						<input type="text" ng-model="data.mentor_chat" autocomplete="off" spellcheck="false">
+						<p class="label">Mentor: Compiler</p>
+						<input type="text" ng-model="data.mentor_compiler" autocomplete="off" spellcheck="false">
+						<p class="label">Mentor: Index</p>
+						<input type="text" ng-model="data.mentor_index" autocomplete="off" spellcheck="false">
+						<p class="label">Mentor: Lectie</p>
+						<input type="text" ng-model="data.mentor_lectie" autocomplete="off" spellcheck="false">
+						<p class="label">Mentor: Materiale</p>
+						<input type="text" ng-model="data.mentor_materiale" autocomplete="off" spellcheck="false">
+						<p class="label">Mentor: Problema</p>
+						<input type="text" ng-model="data.mentor_problema" autocomplete="off" spellcheck="false">
+						<p class="label">Mentor: Test</p>
+						<input type="text" ng-model="data.mentor_test" autocomplete="off" spellcheck="false">
 					</li>
 
 					<!-- Adaugare admin -->
@@ -286,21 +323,31 @@
 
 					<!-- Mesaje -->
 					<li>
-						<h3 class="title">Mesaje <a href="https://infocuza-contact.firebaseio.com"><i class="fa fa-link"></i></a></h3>
+						<a href="https://infocuza-contact.firebaseio.com"><h3 class="title">Mesaje <i>Click pentru redirectionare</i></h3></a>
 					</li>
 					<li id="contact-list"></li>
 
 					<!-- Char camera -->
 					<li>
-						<h3 class="title">Camere chat <a href="https://infocuza-chat.firebaseio.com"><i class="fa fa-link"></i></a></h3>
+						<a href="https://infocuza-chat.firebaseio.com"><h3 class="title">Camere chat <i>Click pentru redirectionare</i></h3></a>
 					</li>
 					<li id="chat-list"></li>
-					
+
 				</ul>
 			</div>
 
 		</div>
 	</div>
-	
+
+	<!-- Context menu -->
+	<div class="context">
+		<ul>
+			<a href="{{data.context_item_link_1}}"><li><i class="fa fa-home"></i>{{data.context_item_1}}</li></a>
+			<a href="{{data.context_item_link_2}}"><li><i class="fa fa-book"></i>{{data.context_item_2}}</li></a>
+			<a href="{{data.context_item_link_3}}"><li><i class="fa fa-comments"></i>{{data.context_item_3}}</li></a>
+			<a href="{{data.context_item_link_4}}"><li><i class="fa fa-lock"></i>{{data.context_item_4}}</li></a>
+		</ul>
+	</div>
+
 </body>
 </html>

@@ -35,12 +35,29 @@
 		$export[1] = $export[1] . "<div class='intro'>";
 		if ($used==0){
 			$export[1] = $export[1] . "<img src='http://unsplash.it/1800/400?random'>";
+			$export[1] = $export[1] . "<div class='vertical-center'>";
+			$export[1] = $export[1] . "<div class='grid'>";
 		}
 		else{
-			$export[1] = $export[1] . "<div class='image-container'><div class='image-pattern' style='background: url(assets/randomSubtle/randomSubtle.php);'></div></div>";
+			$backgroundJSON = file_get_contents('http://localhost/InfoCuza/assets/randomSubtle/randomSubtleTuples.php');
+			$background = json_decode($backgroundJSON);
+			$backgroundUsed = $background[0];
+			$backgroundLocation = $background[1];
+			$export[1] = $export[1] . "<div class='image-container'><div class='image-pattern' style='background: url(" . $backgroundUsed . ");'></div></div>";
+			if ($backgroundLocation == "Light"){
+				$color = 1;
+			}
+			else if ($backgroundLocation == "Dark"){
+				$color = 0;
+			}
+			$export[1] = $export[1] . "<div class='vertical-center'>";
+			if ($color == 0){
+				$export[1] = $export[1] . "<div class='grid white'>";
+			}
+			else if ($color == 1){
+				$export[1] = $export[1] . "<div class='grid black'>";
+			}
 		}
-		$export[1] = $export[1] . "<div class='vertical-center'>";
-		$export[1] = $export[1] . "<div class='grid'>";
 		$export[1] = $export[1] . "<h1>" . $row['title'] . "</h3>";
 		$export[1] = $export[1] . "<p>" . $row['description']  . "</p>";
 		$export[1] = $export[1] . "<ul>";

@@ -11,12 +11,16 @@ $(document).ready(function(){
 
   var editor = ace.edit("code");
   var editorInput = ace.edit("input");
+  var editorOutput = ace.edit("output");
   editor.setTheme("ace/theme/cobalt");
   editorInput.setTheme("ace/theme/chaos");
+  editorOutput.setTheme("ace/theme/vibrant_ink");
   editor.session.setMode("ace/mode/c_cpp");
   editorInput.session.setMode("ace/mode/plain_text");
+  editorOutput.session.setMode("ace/mode/plain_text");
   editor.setShowPrintMargin(false);
   editorInput.setShowPrintMargin(false);
+  editorOutput.setShowPrintMargin(false);
   editor.on("input", function() {
       $("#characters").html("Numar de caractere: " + editor.session.getValue().length);
   });
@@ -84,14 +88,12 @@ $(document).ready(function(){
               break;
           }
           if (response["any_cmperr"]==true){
-            $("#tip").html("Eroare la compilare:");
-            $("#out").html(response["cmperr"]);
+            editorOutput.setValue(response["cmperr"], 1);
             $("#timp").html("Timp executare: <b> - secunde</b>");
             $("#memorie").html("Memorie: <b> - kilobytes</b>");
           }
           else{
-            $("#tip").html("Output:");
-            $("#out").html(response["stdout"]);
+            editorOutput.setValue(response["stdout"], 1);
             $("#timp").html("Timp executare: <b>" + response["time"] + " secunde</b>");
             $("#memorie").html("Memorie: <b>" + response["memory"] + " bytes</b>");
           }
@@ -119,20 +121,19 @@ $(document).ready(function(){
           },
           dataType: "json",
           success: function (response){
-              console.log(response);
               $("#testeCorecte").append(response[0]);
               $("#testeFacute").append(response[1]);
               if (response[2]==1){
-                  $("#score-text").append(" Programul tau nu a depasit limita de timp. ");
+                  $("#score-text").append("<br><br><p><i class='fa fa-clock-o'></i> Programul tau nu a depasit limita de timp.</p>");
               }
               else if (response[2]==0){
-                  $("#score-text").append(" Din pacate, ai depasit limita de timp. ");
+                  $("#score-text").append("<br><br><p><i class='fa fa-clock-o'></i> Din pacate, ai depasit limita de timp.</p>");
               }
               if (response[3]==1){
-                  $("#score-text").append("Programul tau nu a depasit limita de timp.");
+                  $("#score-text").append("<p><i class='fa fa-folder'></i> Programul tau nu a depasit limita de spatiu.<p>");
               }
               else if (response[3]==0){
-                  $("#score-text").append("Din pacate, ai depasit limita de timp.");
+                  $("#score-text").append("<p><i class='fa fa-folder'></i> Din pacate, ai depasit limita de spatiu.<p>");
               }
               modal_launch();
           }

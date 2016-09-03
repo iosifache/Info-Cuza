@@ -25,6 +25,7 @@
 	<!-- CSS stylesheets -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" type="text/css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.4.0/css/flag-icon.min.css" rel="stylesheet" type="text/css">
 	<link href="assets/loader/loader.css" rel="stylesheet" type="text/css">
 	<link href="assets/gridSystem/gridSystem.css" rel="stylesheet" type="text/css">
 	<link href="assets/contextMenu/contextMenu.css" rel="stylesheet" type="text/css">
@@ -39,12 +40,15 @@
 	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+	<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 	<script src="assets/loader/loader.js"></script>
 	<script src="assets/contextMenu/contextMenu.js"></script>
 	<script src="js/firebase.js"></script>
 	<script src="js/menu.js"></script>
 	<script src="js/desktop.js"></script>
+	<script src="js/translate.js"></script>
 	<script src="js/animation.js"></script>
+	<script src="js/location.js"></script>
 
 </head>
 <body>
@@ -151,8 +155,16 @@
 			<ul>
 				<a href="{{data.footer_item_link_1}}"><li>{{data.footer_item_1}}</li></a>
 				<a href="{{data.footer_item_link_2}}"><li>{{data.footer_item_2}}</li></a>
+				<a href="{{data.footer_item_link_3}}"><li>{{data.footer_item_3}}</li></a>
+				<a href="{{data.footer_item_link_4}}"><li>{{data.footer_item_4}}</li></a>
 				<a id="desktop"><li>Desktop app</li></a>
+				<a id="translation">
+					<li class="english" data-lang="English"><span class="flag-icon flag-icon-gb"></span></li>
+					<li class="romanian" data-lang="Romanian"><span class="flag-icon flag-icon-ro"></span></li>
+				</a>
 			</ul>
+			<div id="google_translate_element"></div>
+			<div class="last-pixel"></div>
 		</div>
 	</div>
 

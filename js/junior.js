@@ -108,4 +108,28 @@ $(document).ready(function(){
         }, 1);
     });
 
+    // Note plugin
+    var note = getCookie("note");
+    if (!note){
+        $("textarea").val("");
+    }
+    else{
+        $("textarea").val(note);
+    }
+    var clicks=0;
+    $(".button").click(function(){
+        if (clicks%2==0){
+            $(".notePlugin").css("margin-left", "0");
+            clicks++;
+        }
+        else if (clicks%2==1){
+            $(".notePlugin").removeAttr('style');
+            clicks++;
+        }
+    });
+    $("textarea").keyup(function(){
+        note = $("textarea").val();
+        document.cookie = "note=" + note;
+    });
+
 });

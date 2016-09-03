@@ -24,15 +24,17 @@ $(document).ready(function(){
         $('#export-pdf').click(function(){
           var doc = new jsPDF();
             html2canvas($('.markdown-body'),{
-              onrendered: function(canvas){
-                height = canvas.height*185/canvas.width;
-                img = canvas.toDataURL("image/png");
-                doc.addImage(img, 'JPEG', 10, 10, 185, height);
-              }
+                onrendered: function(canvas){
+                    widthCanvas = canvas.width*210/canvas.height;
+                    marginLaterial = (210-widthCanvas)/2;
+                    img = canvas.toDataURL("image/png");
+                    doc.addImage(img, 'JPEG', marginLaterial, 10, widthCanvas, 210);
+                }
             });
             setTimeout(function(){
-              docName = "Lectie" + lang.toString() + "_" +id.toString() + ".pdf";
-              doc.save(docName);
+                title = $(".intro h1").text();
+                docName = title  + ".pdf";
+                doc.save(docName);
             }, 500);
 
         });
