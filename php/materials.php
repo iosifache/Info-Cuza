@@ -3,8 +3,11 @@
 	// Connect
 	require 'connect.php';
 
-	// Background
-	require 'backgroundUse.php';
+	// Get used type of background
+	$query = "SELECT * FROM background LIMIT 1";
+	$result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_array($result);
+	$used = $row[0];
 
 	// Require month library
 	require '../assets/month/month.php';

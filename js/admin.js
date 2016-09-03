@@ -13,8 +13,8 @@ $(document).ready(function(){
         $.ajax({
             type: "GET",
             url: "php/adminLogin.php",
-            dataType: "html",    
-            data: {user:user, password:password},   
+            dataType: "html",
+            data: {user:user, password:password},
             success: function(response){
 
                 // No account
@@ -31,7 +31,7 @@ $(document).ready(function(){
                     setTimeout(function(){
                         window.location.replace("adminPanel.html");
                     }, 1000);
-                    
+
                 }
 
                 // Incorrect password

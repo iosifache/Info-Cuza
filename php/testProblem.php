@@ -1,4 +1,4 @@
-    <?php
+<?php
 
     // Turn off error reporting
     error_reporting(0);
@@ -18,7 +18,7 @@
     $result = mysqli_query($conn, $query);
     $export = array();
     while ($row = mysqli_fetch_array($result)){
-    	$testeDB = $row['teste'];
+        $testeDB = $row['teste'];
         $restrictieTimp = $row['restrictieTimp'];
         $restrictieSpatiu = $row['restrictieSpatiu'];
     }
@@ -65,8 +65,8 @@
         sleep(3);
         $url = 'http://cloudcompiler.esy.es/api/submissions/' . $id;
         curl_setopt_array($curl, array(
-          CURLOPT_RETURNTRANSFER => 1,
-          CURLOPT_URL => $url
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => $url
         ));
         $resp = curl_exec($curl);
         $resp_array = json_decode($resp, true);
@@ -82,8 +82,8 @@
         if ($resp_array["memory"]<$spatiu){
             $spatiu = $resp_array["memory"];
         }
-
     }
+    
     $array[0] = $score;
     $array[1] = count($teste);
     if ($timp <= $restrictieTimp){
@@ -103,4 +103,4 @@
     // cURL close
     curl_close($curl);
 
-    ?>
+?>

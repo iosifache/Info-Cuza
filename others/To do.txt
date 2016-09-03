@@ -1,5 +1,4 @@
-ALL:
-- Folosire diacritice
-- Reducerea dimensiunii codului prin versiuni minified
-- OOP
-- Securitare, spre exemplu DDOS si impersonation
+- Organizare cod
+- Copiere pe Git, USB si host
+- Posibila prezentare PPT
+- Update documentatie si adaugare public tinta

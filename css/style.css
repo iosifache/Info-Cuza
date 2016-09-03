@@ -1102,19 +1102,19 @@ i{
 
 .admin .label i{
 	display: inline;
-    font-size: 8px;
-    color: #3498db;
-    text-transform: none;
-    padding: 0 0 0 5px;
+	font-size: 8px;
+	color: #3498db;
+	text-transform: none;
+	padding: 0 0 0 5px;
 	opacity: 0;
 }
 
 .admin .title i{
 	display: inline;
-    font-size: 8px;
-    color: #3498db;
-    text-transform: none;
-    padding: 0 0 0 5px;
+	font-size: 8px;
+	color: #3498db;
+	text-transform: none;
+	padding: 0 0 0 5px;
 	opacity: 0;
 }
 

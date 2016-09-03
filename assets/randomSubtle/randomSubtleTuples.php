@@ -12,7 +12,7 @@
 
 	*/
 
-    ini_set("allow_url_fopen", 1);
+	ini_set("allow_url_fopen", 1);
 	$number = rand(1, 2);
 	if ($number == 1){
 		$dir = "Light";
@@ -23,7 +23,7 @@
 	$files = scandir('../../image/subtle/' . $dir . "/");
 	$randomIndex = array_rand($files);
 	$name = $files[$randomIndex];
-    $location = "image/subtle/" . $dir . "/" . $name;
+	$location = "image/subtle/" . $dir . "/" . $name;
 	echo json_encode(array($location, $dir));
 
 ?>

@@ -27,9 +27,7 @@
 	<script src="assets/helpers/helpers.js"></script>
 	<script src="assets/loader/loader.js"></script>
 	<script src="js/firebase.js"></script>
-	<script src="js/adminVerifyLogged.js"></script>
 	<script src="assets/tabs/tabs.js"></script>
-	<script src="js/adminLocation.js"></script>
 	<script src="js/adminTools.js"></script>
 	<script src="js/ro.js"></script>
 	<script src="assets/scrollTop/scrollTop.js"></script>
@@ -247,6 +245,10 @@
 						<input type="text" ng-model="data.mentor_problema" autocomplete="off" spellcheck="false">
 						<p class="label">Mentor: Test</p>
 						<input type="text" ng-model="data.mentor_test" autocomplete="off" spellcheck="false">
+						<p class="label">Eroare: 404</p>
+						<input type="text" ng-model="data.eroare_404" autocomplete="off" spellcheck="false">
+						<p class="label">Eroare: 403</p>
+						<input type="text" ng-model="data.eroare_403" autocomplete="off" spellcheck="false">
 					</li>
 
 					<!-- Adaugare admin -->
@@ -327,7 +329,7 @@
 					</li>
 					<li id="contact-list"></li>
 
-					<!-- Char camera -->
+					<!-- Chat camera -->
 					<li>
 						<a href="https://infocuza-chat.firebaseio.com"><h3 class="title">Camere chat <i>Click pentru redirectionare</i></h3></a>
 					</li>

@@ -13,7 +13,7 @@
 	echo var_dump($result);
 	if ($tip=='Lectie'){
 		$query = "DELETE FROM lectii WHERE id='$id'";
-	} 
+	}
 	else if ($tip=='Test'){
 		$query = "DELETE FROM teste WHERE id='$id'";
 	}
@@ -22,5 +22,5 @@
 
 	// Disconnect
 	mysqli_close($conn);
-	
+
 ?>

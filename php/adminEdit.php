@@ -1,5 +1,5 @@
 <?php
-	
+
 	require 'connect.php';
 
 	// GET data
@@ -241,9 +241,9 @@
 			echo '<input type="text" autocomplete="off" spellcheck="false" id="corect_10_PAS" placeholder="Raspuns corect #2" value="' . $correct_PAS[9] . '">';
 			echo '<button class="admin-button" id="update-test-PAS">Update</button>';
 		}
-		
+
 	}
-	
+
 	// Disconnect
 	mysqli_close($conn);
 

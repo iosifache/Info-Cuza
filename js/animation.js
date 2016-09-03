@@ -1,7 +1,9 @@
 $(document).ready(function(){
+    var action = "check";
     $.ajax({
         type: "GET",
-        url: "php/animationCheck.php",
+        data: {action: action},
+        url: "php/animation.php",
         dataType: "html",
         success: function(response){
             if (response==1){

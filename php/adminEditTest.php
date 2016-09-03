@@ -1,5 +1,5 @@
 <?php
-	
+
 	// Connect
 	require 'connect.php';
 

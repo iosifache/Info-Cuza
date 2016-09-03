@@ -3,8 +3,11 @@
 	// Connect
 	require 'connect.php';
 
-	// Background
-	require 'backgroundUse.php';
+	// Get used type of background
+	$query = "SELECT * FROM background LIMIT 1";
+	$result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_array($result);
+	$used = $row[0];
 
 	// Require month library
 	require '../assets/month/month.php';
@@ -73,15 +76,15 @@
 	$query = "SELECT * FROM probleme WHERE id='$id'";
 	$result = mysqli_query($conn, $query);
 	while ($row = mysqli_fetch_array($result)){
-        echo "<div class='grid'>";
+		echo "<div class='grid'>";
 		echo "<div class='markdown-body'>";
 		echo "<h2 id='descriereProblema'>Descriere problema</h2>";
 		echo $row['descriereProblema'];
-        echo "<h2 id='descriereInput'>Date de intare</h2>";
+		echo "<h2 id='descriereInput'>Date de intare</h2>";
 		echo $row['descriereInput'];
-        echo "<h2 id='descriereOutput'>Date de iesire</h2>";
+		echo "<h2 id='descriereOutput'>Date de iesire</h2>";
 		echo $row['descriereOutput'];
-        echo "<h2 id='precizari'>Precizari</h2>";
+		echo "<h2 id='precizari'>Precizari</h2>";
 		echo $row['precizari'];
 		echo "<h2 id='compiler'>Compiler</h2>";
 		echo "</div>";
@@ -91,7 +94,7 @@
 		echo "<a href='#descriereInput'><li><div>Date de intrare</div></li></a>";
 		echo "<a href='#descriereOutput'><li><div>Date de iesire</div></li></a>";
 		echo "<a href='#precizari'><li><div>Precizari</div></li></a>";
-        echo "<a href='#compiler'><li><div>Compilator</div></li></a>";
+		echo "<a href='#compiler'><li><div>Compilator</div></li></a>";
 		echo "</ul>";
 	}
 

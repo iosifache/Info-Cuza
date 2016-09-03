@@ -1,12 +1,13 @@
 $(document).ready(function(){
     $.getJSON("http://ip-api.com/json/?", function(data){
-        region = data.region;
-        country = data.countryCode;
+        var region = data.region;
+        var country = data.countryCode;
+        var action = "add";
         $.ajax({
             type: "GET",
-            url: "php/addLocation.php",
+            url: "php/location.php",
             dataType: "html",
-            data: {region:region, country: country}
+            data: {action: action, region:region, country: country}
         });
     });
 })
