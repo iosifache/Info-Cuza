@@ -72,6 +72,12 @@
 	$row = mysqli_fetch_array($result);
 	array_push($export, $row[0]);
 
+	// Count tests
+	$query = "SELECT COUNT(date) FROM materiale WHERE tip='Problema' LIMIT 1";
+	$result = mysqli_query($conn, $query);
+	$row = mysqli_fetch_array($result);
+	array_push($export, $row[0]);
+
 	// Export
 	echo json_encode($export);
 

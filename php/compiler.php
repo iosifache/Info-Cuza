@@ -36,7 +36,7 @@
     $id = $resp_array['id'];
 
     // Get submission result
-    sleep(3);
+    sleep(4);
     $url = 'http://cloudcompiler.esy.es/api/submissions/' . $id;
     curl_setopt_array($curl, array(
         CURLOPT_RETURNTRANSFER => 1,

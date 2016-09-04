@@ -1,4 +1,0 @@
-- Organizare cod
-- Copiere pe Git, USB si host
-- Posibila prezentare PPT
-- Update documentatie si adaugare public tinta

@@ -85,6 +85,7 @@ function initGeneral(){
             $(".admin-statistics-list #min_age").html(responses[8]);
             $(".admin-statistics-list #total_admini").html(responses[9]);
             $(".admin-statistics-list #max_age").html(responses[10]);
+            $(".admin-statistics-list #total_probleme").html(responses[11]);
         }
     });
 

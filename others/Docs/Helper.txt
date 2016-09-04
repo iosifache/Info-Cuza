@@ -1,0 +1,24 @@
+"Siruri de caractere", "Lectie"
+
+C, C, C, C, I, C, P, C, C, C
+
+"#include <iostream>
+using namespace std;
+int main(){
+    int a,b;
+    cin >> a;
+    cin >> b;
+    cout << a+b;
+    return 0;
+}"
+
+"Pentru ca numarul de caractere nu este stabilit la citire, putem folosi o functie specifica pentru a determina lungimea string-ului, functia STRLEN (string length). Deoarece primul caracter din cele n se gaseste in pozitia 0, deducem ca ultimul se va gasi in pozitia n-1."
+
+"Titlu de test"
+"Descriere"
+"Lectie"
+"CPP"
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+
+"Descriere a problemei de test"
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. I'm on Grepit."

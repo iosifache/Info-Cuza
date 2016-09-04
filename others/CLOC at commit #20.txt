@@ -1,0 +1,8 @@
+Languages:
+- HTML: 1333 linii de cod
+- CSS: 1860 linii de cod
+- JS: 1729 linii de cod
+- PHP: 1242 linii de cod
+- SQL: 689 linii de cod
+
+TOTAL: 6853 linii de cod
